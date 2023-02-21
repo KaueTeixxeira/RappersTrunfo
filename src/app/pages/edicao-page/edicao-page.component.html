@@ -1,0 +1,24 @@
+<app-header-component></app-header-component>
+<div class="container-edicao">
+    <div class="modal-cartas" *ngIf="modalCartas">
+        <button (click)="controleCartas()" class="fechar">X</button>
+        <app-carta-component></app-carta-component>
+    </div>
+    <div class="modal-cartas" *ngIf="modalJogadores">
+        <button (click)="controleJogadores()" class="fechar">X</button>
+        <app-jogador-component></app-jogador-component>
+    </div>
+    <div class="div-carta" *ngIf="!modalCartas">
+        <div class="opcao-cartas" (click)="controleCartas()">
+            <img src="assets/imagens/editarLogoP.png">
+            <img src="/assets/imagens/cartasLogoP.png" alt="">
+        </div>
+    </div>
+
+    <div class="div-carta" *ngIf="!modalJogadores">
+        <div class="opcao-cartas" (click)="controleJogadores()">
+            <img src="assets/imagens/editarLogoP.png">
+            <img src="/assets/imagens/jgoadoresLogoP.png" alt="">
+        </div>
+    </div>
+</div>

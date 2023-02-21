@@ -1,0 +1,59 @@
+.div-carta {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-edicao {
+    width: 100%;
+    height: 91.7vh;
+    background-color:#e5e5e5 ;
+    display: flex;
+}
+
+.opcao-cartas,
+.opcao-jogadores
+ {
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 500px;
+    height: 550px;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.opcao-cartas:hover {
+    transform: scale(1.03);
+}
+
+.modal-cartas{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 91.7vh;
+    background-color: #fff;
+    position: absolute;
+}
+
+.fechar {
+    width: 100px;
+    border: none;
+    background-color: white;
+    font-weight: 900;
+    position:initial;
+    float: right;
+}
+
+.div-fechar {
+    top: 0;
+}

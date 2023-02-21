@@ -1,0 +1,40 @@
+.div-carta {
+    display: flex;
+    flex-wrap: wrap;
+    width: 310px;
+    height: 470px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: black;
+    /* transition: transform 0.2s ease-in-out; */
+    transition-duration: .5s;
+}
+
+.imagem {
+    width: 100%;
+    height: 44%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.informacoes {
+    width: 230px;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.div-carta:hover {
+    transform: scale(1.05);
+    transition-duration: .5s;
+    color: #000;
+    background-color: #fff;
+    box-shadow: 10px 10px;
+}
+
+

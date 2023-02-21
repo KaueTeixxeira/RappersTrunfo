@@ -1,0 +1,16 @@
+.div-container {
+    width: 300px;
+    height: 400px;
+    border: solid 1px black;
+    cursor: pointer;
+    background-color: black;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+
+.div-container:hover {
+    transform: scale(1.05);
+}
