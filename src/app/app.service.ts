@@ -12,8 +12,10 @@ export class MeuServico {
   numDerrota!: number;
   porcVitoria: string = "0%";
   listaDeCartas: Array<Carta> = [{url: "https://i.scdn.co/image/170254ebdd747f4e7045df1cae8f11a42dc1a547",nomeCarta: "Dr.Dre",freestyle: 87,originalidade: 96,impacto: 98,maisOuvidas: 75,ranking: 'S'},
-  {url: "https://i.scdn.co/image/170254ebdd747f4e7045df1cae8f11a42dc1a547",nomeCarta: "Dr.Dre",freestyle: 87,originalidade: 96,impacto: 98,maisOuvidas: 75,ranking: 'S'},{url: "https://i.scdn.co/image/170254ebdd747f4e7045df1cae8f11a42dc1a547",nomeCarta: "Dr.Dre",freestyle: 87,originalidade: 96,impacto: 98,maisOuvidas: 75,ranking: 'S'}];
-  listaDeUsuarios: Array<Usuario> = [{id: 1,nome: "Kauê",numVitoria: 0, numDerrota: 0}]
+  {url: "https://i.scdn.co/image/170254ebdd747f4e7045df1cae8f11a42dc1a547",nomeCarta: "Dr.Dre",freestyle: 87,originalidade: 96,impacto: 98,maisOuvidas: 75,ranking: 'S'},
+  {url: "https://i.scdn.co/image/170254ebdd747f4e7045df1cae8f11a42dc1a547",nomeCarta: "Dr.Dre",freestyle: 87,originalidade: 96,impacto: 98,maisOuvidas: 75,ranking: 'S'},
+  {url: "https://i.scdn.co/image/170254ebdd747f4e7045df1cae8f11a42dc1a547",nomeCarta: "Dr.Dre",freestyle: 87,originalidade: 96,impacto: 98,maisOuvidas: 90,ranking: 'S'}];
+  listaDeUsuarios: Array<Usuario> = [{id: 1,nome: "Kauê",numVitoria: 0, numDerrota: 0}, {id:2, nome: "Gabriel", numVitoria: 0, numDerrota:0}]
 
   
   constructor(){}

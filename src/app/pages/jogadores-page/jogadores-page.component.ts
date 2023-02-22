@@ -14,7 +14,7 @@ export class JogadoresPageComponent implements OnInit {
     
   }
 
-  listaDeJogadores: Array<Jogador> = [new Jogador(1,"Kauê",1,2),new Jogador(2,"Gabriel",0,1)]
+  listaDeJogadores: Array<Jogador> = [new Jogador(1,"Kauê",1,2),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1)]
 
 }
 

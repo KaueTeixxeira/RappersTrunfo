@@ -1,9 +1,12 @@
-<app-header-component></app-header-component>
-<div class="container-jogadores">
-    <app-jogador-component *ngFor="let jogador of listaDeJogadores">
-        <p>Nome: {{jogador.nome}}</p>
-        <p>Vitórias: {{jogador.numVitoria}}</p>
-        <p>Derrotas: {{jogador.numDerrota}}</p>
-        <p>Win rate: {{jogador.porcVitoria}}</p>
-    </app-jogador-component>
+<div class="corpo">
+    <app-header-component></app-header-component>
+    <div class="container-jogadores">
+        <app-jogador-component *ngFor="let jogador of listaDeJogadores">
+            <p>Nome: {{jogador.nome}}</p>
+            <p>Vitórias: {{jogador.numVitoria}}</p>
+            <p>Derrotas: {{jogador.numDerrota}}</p>
+            <p>Win rate: {{jogador.porcVitoria}}</p>
+        </app-jogador-component>
+    </div>
 </div>
+

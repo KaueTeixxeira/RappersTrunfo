@@ -1,9 +1,10 @@
-<app-header-component></app-header-component>
-<div class="container-opcoes">
-    <app-opcoes-component *ngFor="let item of itens" routerLink="{{item.rota}}">
-        <img [src]="item.titulo" alt="" class="titulo">
-    </app-opcoes-component>
-    
+<div class="corpo">
+    <app-header-component></app-header-component>
+    <div class="container-opcoes">
+        <app-opcoes-component *ngFor="let item of itens" routerLink="{{item.rota}}">
+            <img [src]="item.titulo" alt="" class="titulo">
+        </app-opcoes-component>
+    </div>
 </div>
 
 

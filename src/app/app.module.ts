@@ -15,6 +15,7 @@ import { JogadoresPageComponent } from './pages/jogadores-page/jogadores-page.co
 import { JogadorComponentComponent } from './components/jogador-component/jogador-component.component';
 import { PerfilPageComponent } from './pages/perfil-page/perfil-page.component';
 import { EdicaoPageComponent } from './pages/edicao-page/edicao-page.component';
+import { EdicaoComponentComponent } from './components/edicao-component/edicao-component.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { EdicaoPageComponent } from './pages/edicao-page/edicao-page.component';
     JogadoresPageComponent,
     JogadorComponentComponent,
     PerfilPageComponent,
-    EdicaoPageComponent
+    EdicaoPageComponent,
+    EdicaoComponentComponent
   ],
   imports: [
     FormsModule,

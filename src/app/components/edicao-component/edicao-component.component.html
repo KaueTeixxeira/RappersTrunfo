@@ -1,0 +1,22 @@
+<div>
+    <div class="div-fundo">
+        <div class="container-central">
+            <form>
+                <input type="email" class="form-control" id="usuario" name="usuario" aria-describedby="emailHelp"
+                    placeholder="Nome do rapper" maxlength="30" [(ngModel)]="nomeCarta">
+                <input type="text" class="form-control" name="url" placeholder="Url do rappers" min="0" max="100" [(ngModel)]="url">
+                <input type="number" class="form-control" name="freestyle" placeholder="Freestyle" min="0"max="3"  [(ngModel)]="freestyle">
+                <input type="number" class="form-control" name="originalidade" placeholder="Originalidade" min="0" max="100" [(ngModel)]="originalidade">
+                <input type="number" class="form-control" name="impacto" placeholder="Impacto" min="0" max="100" [(ngModel)]="impacto">
+                <input type="number" class="form-control" name="maisOuvidas" placeholder="Músicas mais ouvidas" min="0" max="100" [(ngModel)]="maisOuvidas">
+                <label>Ranking</label>
+                <select [(ngModel)]="ranking" name="ranking">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                </select>
+                <button class="btn fifth" type="submit" (click)="adicionarCarta()">Salvar</button>
+            </form> 
+        </div>
+    </div>
+</div>

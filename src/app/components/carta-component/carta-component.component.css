@@ -8,8 +8,8 @@
     align-items: center;
     color: white;
     background-color: black;
-    /* transition: transform 0.2s ease-in-out; */
     transition-duration: .5s;
+    margin: 30px;
 }
 
 .imagem {
@@ -33,7 +33,7 @@
     transform: scale(1.05);
     transition-duration: .5s;
     color: #000;
-    background-color: #fff;
+    background-color: #e5e5e5;
     box-shadow: 10px 10px;
 }
 

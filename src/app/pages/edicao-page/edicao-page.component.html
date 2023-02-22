@@ -1,24 +1,42 @@
-<app-header-component></app-header-component>
-<div class="container-edicao">
-    <div class="modal-cartas" *ngIf="modalCartas">
-        <button (click)="controleCartas()" class="fechar">X</button>
-        <app-carta-component></app-carta-component>
-    </div>
-    <div class="modal-cartas" *ngIf="modalJogadores">
-        <button (click)="controleJogadores()" class="fechar">X</button>
-        <app-jogador-component></app-jogador-component>
-    </div>
-    <div class="div-carta" *ngIf="!modalCartas">
-        <div class="opcao-cartas" (click)="controleCartas()">
-            <img src="assets/imagens/editarLogoP.png">
-            <img src="/assets/imagens/cartasLogoP.png" alt="">
-        </div>
-    </div>
+<div class="corpo">
+    <app-header-component></app-header-component>
+    <div class="container-edicao">
 
-    <div class="div-carta" *ngIf="!modalJogadores">
-        <div class="opcao-cartas" (click)="controleJogadores()">
-            <img src="assets/imagens/editarLogoP.png">
-            <img src="/assets/imagens/jgoadoresLogoP.png" alt="">
+        <div class="modal-cartas" *ngIf="modalEdicaoCartas"> <!-- 1.3 -->
+            <button (click)="abrirEdicaoCartas()" class="fechar">X</button>
+            <app-edicao-component [verificacao]="verificacao"></app-edicao-component>
+        </div>
+
+        <div class="modal-cartas" *ngIf="modalCartas && !modalEdicaoCartas">  <!-- 1.2 -->
+            <button (click)="controleCartas()" class="fechar">X</button>
+            <app-carta-component *ngFor="let carta of listaDeCartas" (click)="abrirEdicaoCartas()">
+                <img [src]="carta.url" class="foto-rapper">
+                <p class="nome-rapper"><strong>{{carta.nomeCarta}}</strong></p>
+                <p class="freestyle">Freestyle: {{carta.freestyle}}</p>
+                <p class="originalidade">Originalidade: {{carta.originalidade}}</p>
+                <p class="impacto">Impacto: {{carta.impacto}}</p>
+                <p class="maisOuvidas">Músicas mais ouvidas: {{carta.maisOuvidas}}</p>
+                <p class="ranking">Ranking: {{carta.ranking}}</p>
+            </app-carta-component>
+        </div>
+
+        <div class="modal-cartas" *ngIf="modalJogadores">
+            <button (click)="controleJogadores()" class="fechar">X</button>
+            <app-jogador-component></app-jogador-component>
+        </div>
+
+        <div class="div-carta" *ngIf="!modalCartas"> <!-- 1.1 -->
+            <div class="opcao-cartas" (click)="controleCartas()">
+                <img src="assets/imagens/editarLogoP.png">
+                <img src="/assets/imagens/cartasLogoP.png" alt="">
+            </div>
+        </div>
+        
+        <div class="div-carta" *ngIf="!modalJogadores">
+            <div class="opcao-cartas" (click)="controleJogadores()">
+                <img src="assets/imagens/editarLogoP.png">
+                <img src="/assets/imagens/jgoadoresLogoP.png" alt="">
+            </div>
         </div>
     </div>
 </div>
