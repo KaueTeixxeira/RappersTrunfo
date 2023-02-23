@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MeuServico } from 'src/app/app.service';
 
 @Component({
   selector: 'app-jogadores-page',
@@ -7,32 +8,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JogadoresPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private meuServico: MeuServico) { }
 
   ngOnInit(): void {
     console.log( Math.trunc((0/(0 + 1)) * 100))
     
   }
 
-  listaDeJogadores: Array<Jogador> = [new Jogador(1,"Kauê",1,2),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1),new Jogador(2,"Gabriel",0,1)]
+  listaDeJogadores: Array<Jogador> = this.meuServico.listaDeUsuarios;
+
+  calculaWinRate(jogador: Jogador): string{
+    if (jogador.numDerrota != 0 || jogador.numVitoria != 0) {
+      return  Math.trunc((jogador.numVitoria/(jogador.numVitoria + jogador.numDerrota)) * 100) + "%"
+    }
+    return "0%"
+  }
 
 }
 
 class Jogador{
 
-  id!:number
   nome!: String;
   numVitoria!: number;
   numDerrota!: number;
-  porcVitoria: string = "0%";
 
-  constructor(id: number,nome:String, numVitoria: number, numDerrota: number) {
-    this.id = id;
+  constructor(nome:String, numVitoria: number, numDerrota: number) {
     this.nome = nome;
     this.numVitoria = numVitoria;
     this.numDerrota = numDerrota;
-    if (numDerrota != 0 || numVitoria != 0) {
-      this.porcVitoria = Math.trunc((numVitoria/(numVitoria + numDerrota)) * 100) + "%"
-    }
+    
   }
 }

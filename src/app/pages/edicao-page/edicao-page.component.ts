@@ -18,7 +18,8 @@ export class EdicaoPageComponent implements OnInit {
   modalEdicaoJogador: boolean = false
   listaDeCartas: Array<Carta> = this.meuServico.listaDeCartas
   listaDeJogadores: Array<Jogador> = this.meuServico.listaDeUsuarios
-  carta!: Carta;
+  carta: Carta = {url: "",nomeCarta: "Dr.Dre",freestyle: 0,originalidade: 0,impacto: 0,maisOuvidas: 0,ranking: 'C'};
+  jogador: Jogador = {nome: "",numVitoria: 0, numDerrota: 0};
   verificacao!: boolean;
   
   controleCartas(): void {
@@ -37,8 +38,27 @@ export class EdicaoPageComponent implements OnInit {
     console.log(this.carta)
   }
 
-  abrirEdicaoCartas(){
+  abrirEdicaoCartas(carta: Carta){
+    this.carta = carta
     this.modalEdicaoCartas = !this.modalEdicaoCartas
+  }
+
+  abrirEdicaoJogadores(jogador: Jogador){
+    this.jogador = jogador;
+    this.modalEdicaoCartas = !this.modalEdicaoCartas
+  }
+
+
+  fecharEdicaoCartas(){
+    this.modalEdicaoCartas = !this.modalEdicaoCartas
+  }
+  
+
+  calculaWinRate(jogador: Jogador): string{
+    if (jogador.numDerrota != 0 || jogador.numVitoria != 0) {
+      return  Math.trunc((jogador.numVitoria/(jogador.numVitoria + jogador.numDerrota)) * 100) + "%"
+    }
+    return "0%"
   }
 
 }
@@ -55,8 +75,7 @@ interface Carta {
 }
 
 interface Jogador{
-  id:number
-  nome: String;
+  nome: string;
   numVitoria: number;
   numDerrota: number;
 }

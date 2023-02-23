@@ -11,11 +11,11 @@ export class MeuServico {
   numVitoria!: number;
   numDerrota!: number;
   porcVitoria: string = "0%";
-  listaDeCartas: Array<Carta> = [{url: "https://i.scdn.co/image/170254ebdd747f4e7045df1cae8f11a42dc1a547",nomeCarta: "Dr.Dre",freestyle: 87,originalidade: 96,impacto: 98,maisOuvidas: 75,ranking: 'S'},
-  {url: "https://i.scdn.co/image/170254ebdd747f4e7045df1cae8f11a42dc1a547",nomeCarta: "Dr.Dre",freestyle: 87,originalidade: 96,impacto: 98,maisOuvidas: 75,ranking: 'S'},
-  {url: "https://i.scdn.co/image/170254ebdd747f4e7045df1cae8f11a42dc1a547",nomeCarta: "Dr.Dre",freestyle: 87,originalidade: 96,impacto: 98,maisOuvidas: 75,ranking: 'S'},
-  {url: "https://i.scdn.co/image/170254ebdd747f4e7045df1cae8f11a42dc1a547",nomeCarta: "Dr.Dre",freestyle: 87,originalidade: 96,impacto: 98,maisOuvidas: 90,ranking: 'S'}];
-  listaDeUsuarios: Array<Usuario> = [{id: 1,nome: "Kauê",numVitoria: 0, numDerrota: 0}, {id:2, nome: "Gabriel", numVitoria: 0, numDerrota:0}]
+  listaDeCartas: Array<Carta> = [{url: "https://i.scdn.co/image/170254ebdd747f4e7045df1cae8f11a42dc1a547",nomeCarta: "Dr.Dre1",freestyle: 87,originalidade: 96,impacto: 98,maisOuvidas: 75,ranking: 'S'},
+  {url: "https://i.scdn.co/image/170254ebdd747f4e7045df1cae8f11a42dc1a547",nomeCarta: "Dr.Dre2",freestyle: 87,originalidade: 96,impacto: 98,maisOuvidas: 75,ranking: 'S'},
+  {url: "https://i.scdn.co/image/170254ebdd747f4e7045df1cae8f11a42dc1a547",nomeCarta: "Dr.Dre3",freestyle: 87,originalidade: 96,impacto: 98,maisOuvidas: 75,ranking: 'S'},
+  {url: "https://i.scdn.co/image/170254ebdd747f4e7045df1cae8f11a42dc1a547",nomeCarta: "Dr.Dre4",freestyle: 87,originalidade: 96,impacto: 98,maisOuvidas: 90,ranking: 'S'}, {url: "https://i.scdn.co/image/170254ebdd747f4e7045df1cae8f11a42dc1a547",nomeCarta: "Dr.Dre5",freestyle: 87,originalidade: 96,impacto: 98,maisOuvidas: 90,ranking: 'A'}];
+  listaDeUsuarios: Array<Jogador> = [{nome: "Kauê",numVitoria: 1, numDerrota: 1}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}]
 
   
   constructor(){}
@@ -43,9 +43,8 @@ interface Carta {
   ranking: string;
 }
 
-interface Usuario {
-  id:number
-  nome: String;
+interface Jogador {
+  nome: string;
   numVitoria: number;
   numDerrota: number;
 }
