@@ -11,6 +11,7 @@ export class EdicaoPageComponent implements OnInit {
   constructor(private meuServico: MeuServico) { }
 
   ngOnInit(): void {
+    
   }
   modalCartas: boolean = false
   modalJogadores: boolean = false
@@ -18,9 +19,10 @@ export class EdicaoPageComponent implements OnInit {
   modalEdicaoJogador: boolean = false
   listaDeCartas: Array<Carta> = this.meuServico.listaDeCartas
   listaDeJogadores: Array<Jogador> = this.meuServico.listaDeUsuarios
-  carta: Carta = {url: "",nomeCarta: "Dr.Dre",freestyle: 0,originalidade: 0,impacto: 0,maisOuvidas: 0,ranking: 'C'};
+  carta: Carta = {url: "", nomeCarta: "", freestyle: 0, originalidade: 0, impacto: 0, maisOuvidas: 0,ranking: 'C'};
   jogador: Jogador = {nome: "",numVitoria: 0, numDerrota: 0};
   verificacao!: boolean;
+  criacao!: boolean;
   
   controleCartas(): void {
     this.verificacao = true;
@@ -39,6 +41,7 @@ export class EdicaoPageComponent implements OnInit {
   }
 
   abrirEdicaoCartas(carta: Carta){
+    this.verificacao = true
     this.carta = carta
     this.modalEdicaoCartas = !this.modalEdicaoCartas
   }
@@ -59,6 +62,20 @@ export class EdicaoPageComponent implements OnInit {
       return  Math.trunc((jogador.numVitoria/(jogador.numVitoria + jogador.numDerrota)) * 100) + "%"
     }
     return "0%"
+  }
+
+  
+  criarJogador(){
+    this.verificacao = false
+    this.jogador = {nome: "",numVitoria: 0, numDerrota: 0};
+    this.modalEdicaoCartas = !this.modalEdicaoCartas
+  }
+
+
+  criarCarta(){
+    this.verificacao = true
+    this.carta = {url: "", nomeCarta: "", freestyle: 0, originalidade: 0, impacto: 0, maisOuvidas: 0,ranking: 'C'}
+    this.modalEdicaoCartas = !this.modalEdicaoCartas
   }
 
 }

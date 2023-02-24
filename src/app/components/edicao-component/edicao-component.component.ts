@@ -11,6 +11,10 @@ export class EdicaoComponentComponent implements OnInit {
 
   constructor(private meuServico: MeuServico, private route: Router) { }
 
+  alertBoolean: boolean = false
+  habilitado: boolean = false
+  frase!: string;
+
   url!: string;
   nomeCarta!: string;
   freestyle!: number;
@@ -23,66 +27,75 @@ export class EdicaoComponentComponent implements OnInit {
   numVitoria!: number;
   numDerrota!: number;
 
+
   ngOnInit(): void {
-    console.log(this.verificacao)
-    this.url = this.carta.url
-    this.nomeCarta = this.carta.nomeCarta
-    this.freestyle = this.carta.freestyle
-    this.originalidade = this.carta.originalidade
-    this.impacto = this.carta.impacto
-    this.maisOuvidas = this.carta.maisOuvidas
-    if (this.carta.ranking == "A") {
-      this.ranking = "A"
-    } else if (this.carta.ranking == "B") {
-      this.ranking = "B"
-    } else if (this.carta.ranking == "C") {
-      this.ranking = "C"
-    } else {
-      this.ranking = "S"
-    }
-
-    this.nome = this.jogador.nome
-    this.numVitoria = this.jogador.numVitoria
-    this.numDerrota = this.jogador.numDerrota
-
-
+    if (this.carta.nomeCarta != "" || this.jogador.nome != "") {
+      console.log(this.verificacao)
+      this.url = this.carta.url
+      this.nomeCarta = this.carta.nomeCarta
+      this.freestyle = this.carta.freestyle
+      this.originalidade = this.carta.originalidade
+      this.impacto = this.carta.impacto
+      this.maisOuvidas = this.carta.maisOuvidas
+      if (this.carta.ranking == "A") {
+        this.ranking = "A"
+      } else if (this.carta.ranking == "B") {
+        this.ranking = "B"
+      } else if (this.carta.ranking == "C") {
+        this.ranking = "C"
+      } else {
+        this.ranking = "S"
+      }
+      this.nome = this.jogador.nome
+      this.numVitoria = this.jogador.numVitoria
+      this.numDerrota = this.jogador.numDerrota
+    } 
   }
 
   adicionarCarta() {
-    this.excluirCarta()
+    this.meuServico.listaDeCartas.forEach((carta, index) => {
+      if (carta.nomeCarta == this.carta.nomeCarta) {
+        this.meuServico.listaDeCartas.splice(index, 1)
+      }
+    });
     this.meuServico.listaDeCartas.push({
       url: this.url, nomeCarta: this.nomeCarta, freestyle: this.freestyle, originalidade: this.originalidade,
       impacto: this.impacto, maisOuvidas: this.maisOuvidas, ranking: this.ranking
     })
-    this.route.navigate(['/cartas-page'])
+    this.frase = "Carta criada com sucesso!"
+    this.modalzera();
   }
 
   adicionarJogador() {
     this.meuServico.listaDeUsuarios.forEach((jogador, index) => {
-      if (jogador.nome == this.nome) {
+      if (jogador.nome == this.jogador.nome) {
         this.meuServico.listaDeUsuarios.splice(index, 1)
       }
     });
-    console.log({ nome: this.nome, numVitoria: this.numVitoria, numDerrota: this.numDerrota })
     this.meuServico.listaDeUsuarios.push({ nome: this.nome, numVitoria: this.numVitoria, numDerrota: this.numDerrota })
-    this.route.navigate(['/jogadores-page'])
+    this.frase = "Jogador criado com sucesso!"
+    this.modalzera();
   }
 
   excluirCarta() {
     this.meuServico.listaDeCartas.forEach((carta, index) => {
-      if (carta.nomeCarta == this.nomeCarta) {
+      if (carta.nomeCarta == this.carta.nomeCarta) {
         this.meuServico.listaDeCartas.splice(index, 1)
-        console.log(carta, index)
+        this.frase = "Carta excluída!"
+        this.modalzera();
       }
     });
   }
 
   excluirJogador(){
     this.meuServico.listaDeUsuarios.forEach((jogador, index) => {
-      if (jogador.nome == this.nome) {
+      if (jogador.nome == this.jogador.nome) {
         this.meuServico.listaDeUsuarios.splice(index, 1)
+        this.frase = "Jogador excluída!"
+        this.modalzera();
       }
     });
+
   }
 
   @Input()
@@ -94,6 +107,10 @@ export class EdicaoComponentComponent implements OnInit {
   @Input()
   jogador!: Jogador
 
+  modalzera(){
+    this.alertBoolean = !this.alertBoolean
+  }
+  
 
 
 }

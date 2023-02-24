@@ -102,4 +102,42 @@ label {
   }
 
 
+  /* ALERT */
+
+  .alert {
+    margin-top: 15px;
+    opacity: 1;
+    transition-duration: 1.3s;
+    position: absolute;
+    padding: 20px;
+    background-color: #5ea762;
+    color: white;
+  }
+  
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }
+  
+  .div-botoes {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .div-alert {
+    display: flex;
+    justify-content: center;
+  }
+
+
 

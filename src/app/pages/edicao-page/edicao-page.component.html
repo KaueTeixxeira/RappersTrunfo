@@ -47,20 +47,20 @@
         </div>
 
         <!-- 4.1  Arrumar funções -->
-        <!-- <div class="div-carta" *ngIf="!modalCartas"> 
-            <div class="opcao-cartas" (click)="controleCartas()">
+        <div class="div-carta" *ngIf="!modalEdicaoCartas && !modalEdicaoCartas"> 
+            <div class="opcao-cartas" (click)="criarCarta()">
                 <img src="assets/imagens/criarLogo.png">
                 <img src="/assets/imagens/cartasLogoP.png" alt="">
             </div>
-        </div>  -->
+        </div> 
 
         <!--3.1   Arrumar funções  -->
-        <!-- <div class="div-carta" *ngIf="!modalJogadores"> 
-            <div class="opcao-cartas" (click)="controleJogadores()">
+        <div class="div-carta" *ngIf="!modalJogadores && !modalEdicaoCartas"> 
+            <div class="opcao-cartas" (click)="criarJogador()">
                 <img src="assets/imagens/criarLogo.png">
                 <img src="/assets/imagens/jgoadoresLogoP.png" alt="">
             </div>
-        </div> -->
+        </div>
 
     </div>
 </div>
