@@ -18,7 +18,7 @@ export class MeuServico {
   new Carta("https://i.scdn.co/image/ab6775700000ee8582775e2485ead59dd0b2b5e3","Kendrick Lamar", 95, 86, 87, 93, 'C'),
   new Carta("https://i.scdn.co/image/ab6761610000e5ebf7d9deb32a290a5ba574ee1c","Nas", 93, 92, 91, 80, 'B'),
   new Carta("https://i.scdn.co/image/ab6761610000e5eb9a398209a4ef3360dce2dec4","Snoop Dogg", 82, 94, 90, 92, 'B') ]
-  listaDeUsuarios: Array<Jogador> = [{nome: "Kauê",numVitoria: 1, numDerrota: 1}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}]
+  listaDeUsuarios: Array<Jogador> = [{nome: "Kauê",numVitoria: 1, numDerrota: 1}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}]
 
   
   constructor(){}

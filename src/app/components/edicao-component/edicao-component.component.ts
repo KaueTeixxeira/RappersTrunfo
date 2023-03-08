@@ -62,7 +62,7 @@ export class EdicaoComponentComponent implements OnInit {
       url: this.url, nomeCarta: this.nomeCarta, freestyle: this.freestyle, originalidade: this.originalidade,
       impacto: this.impacto, maisOuvidas: this.maisOuvidas, ranking: this.ranking
     })
-    this.frase = "Carta criada com sucesso!"
+    this.frase = "Carta cadastrada com sucesso!"
     this.modalzera();
   }
 
@@ -73,7 +73,7 @@ export class EdicaoComponentComponent implements OnInit {
       }
     });
     this.meuServico.listaDeUsuarios.push({ nome: this.nome, numVitoria: this.numVitoria, numDerrota: this.numDerrota })
-    this.frase = "Jogador criado com sucesso!"
+    this.frase = "Jogador cadastrado com sucesso!"
     this.modalzera();
   }
 

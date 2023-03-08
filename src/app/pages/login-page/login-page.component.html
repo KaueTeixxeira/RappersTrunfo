@@ -1,10 +1,10 @@
 <div class="div-fundo">
     <img src="/assets/imagens/962183.jpg" alt="">
-    <div class="container-central">
+    <div class="container-central" >
         <h1>Login</h1>
         <form>
             <input type="email" class="form-control" id="usuario" name="usuario" aria-describedby="emailHelp"
-                placeholder="Usuário" [(ngModel)]="usuario" #nome   >
+                placeholder="Usuário" [(ngModel)]="usuario" #nome >
             <input type="password" class="form-control" name="senha" placeholder="Senha" [(ngModel)]="senha">
             <button (click)="enviarDados()" class="btn fifth"  type="submit" >Logar</button>
         </form> 
