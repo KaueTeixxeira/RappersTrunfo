@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { HttpClient } from "@angular/common/http";
+import { Observable, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MeuServico {
 
+  apiUrl: String = "http://localhost:8081/"
   nome!: string ;
   senha!: string;
   numVitoria!: number;
@@ -21,7 +24,7 @@ export class MeuServico {
   listaDeUsuarios: Array<Jogador> = [{nome: "Kauê",numVitoria: 1, numDerrota: 1}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}, {nome: "Gabriel", numVitoria: 0, numDerrota:0}]
 
   
-  constructor(){}
+  constructor(private httpClient: HttpClient){}
 
   atualizarDados(nome: string, senha:string, numVitoria: number, numDerrota:number) {
     this.nome = nome
@@ -33,6 +36,21 @@ export class MeuServico {
     }
   }
 
+  getAllCartas(): Observable<any>{
+    return this.httpClient.get<any>(this.apiUrl + "carta/all")
+  }
+  getAllPlayers(): Observable<any>{
+    return this.httpClient.get<any>(this.apiUrl + "jogador/all")
+  }
+
+  createCarta(carta: Carta){
+    console.log(carta)
+    return this.httpClient.post(this.apiUrl + "carta",carta).pipe(take(1));
+  }
+
+  // createCarta(Carta){
+
+  // }
   
 }
 

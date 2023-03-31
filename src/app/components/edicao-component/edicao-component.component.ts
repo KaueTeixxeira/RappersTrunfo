@@ -53,15 +53,20 @@ export class EdicaoComponentComponent implements OnInit {
   }
 
   adicionarCarta() {
-    this.meuServico.listaDeCartas.forEach((carta, index) => {
-      if (carta.nomeCarta == this.carta.nomeCarta) {
-        this.meuServico.listaDeCartas.splice(index, 1)
-      }
-    });
-    this.meuServico.listaDeCartas.push({
-      url: this.url, nomeCarta: this.nomeCarta, freestyle: this.freestyle, originalidade: this.originalidade,
-      impacto: this.impacto, maisOuvidas: this.maisOuvidas, ranking: this.ranking
-    })
+    // this.meuServico.listaDeCartas.forEach((carta, index) => {
+    //   if (carta.nomeCarta == this.carta.nomeCarta) {
+    //     this.meuServico.listaDeCartas.splice(index, 1)
+    //   }
+    // });
+    // this.meuServico.listaDeCartas.push({
+    //   url: this.url, nomeCarta: this.nomeCarta, freestyle: this.freestyle, originalidade: this.originalidade,
+    //   impacto: this.impacto, maisOuvidas: this.maisOuvidas, ranking: this.ranking
+    // })
+    console.log("fé")
+    this.meuServico.createCarta(this.carta).subscribe();
+    // VERIFICAR ESSA PARTE, A CARTA ESTÁ INDO VAZIA !!!!
+    
+    console.log("fé2")
     this.frase = "Carta cadastrada com sucesso!"
     this.modalzera();
   }

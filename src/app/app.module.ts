@@ -16,6 +16,8 @@ import { JogadorComponentComponent } from './components/jogador-component/jogado
 import { PerfilPageComponent } from './pages/perfil-page/perfil-page.component';
 import { EdicaoPageComponent } from './pages/edicao-page/edicao-page.component';
 import { EdicaoComponentComponent } from './components/edicao-component/edicao-component.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { EdicaoComponentComponent } from './components/edicao-component/edicao-c
   imports: [
     FormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [MeuServico],
   bootstrap: [AppComponent]

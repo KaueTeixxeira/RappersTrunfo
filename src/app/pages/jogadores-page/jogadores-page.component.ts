@@ -11,11 +11,13 @@ export class JogadoresPageComponent implements OnInit {
   constructor(private meuServico: MeuServico) { }
 
   ngOnInit(): void {
-    console.log( Math.trunc((0/(0 + 1)) * 100))
-    
+    this.meuServico.getAllPlayers().subscribe((data: Array<Jogador>) => {
+      this.listaDeJogadores = data;
+      console.log(this.listaDeJogadores); // Exibe os dados recebidos no console
+    });
   }
 
-  listaDeJogadores: Array<Jogador> = this.meuServico.listaDeUsuarios;
+  listaDeJogadores!: Array<Jogador>;
 
   calculaWinRate(jogador: Jogador): string{
     if (jogador.numDerrota != 0 || jogador.numVitoria != 0) {
