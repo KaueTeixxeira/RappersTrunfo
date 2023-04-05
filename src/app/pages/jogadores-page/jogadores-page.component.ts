@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MeuServico } from 'src/app/app.service';
+import { JogadorService } from 'src/app/service/jogador.service';
 
 @Component({
   selector: 'app-jogadores-page',
@@ -8,13 +9,35 @@ import { MeuServico } from 'src/app/app.service';
 })
 export class JogadoresPageComponent implements OnInit {
 
-  constructor(private meuServico: MeuServico) { }
+  constructor(private meuServico: JogadorService) { }
 
   ngOnInit(): void {
     this.meuServico.getAllPlayers().subscribe((data: Array<Jogador>) => {
       this.listaDeJogadores = data;
-      console.log(this.listaDeJogadores); // Exibe os dados recebidos no console
     });
+
+    // CRIAR JOGADOR
+    // let player: Jogador = new Jogador("Kauê",0,0,"123");
+    // this.meuServico.createPlayer(player).subscribe((data: Jogador) => {
+    //   console.log(data)
+    // })
+
+    // DELETA JOGADOR
+    // this.meuServico.deletePlayer(1).subscribe((data: Jogador) => {
+    //   console.log(data);
+    // })
+
+    // EDITAR
+    // let player: Jogador = new Jogador("Kauê",0,0,"321");
+    // this.meuServico.editPlayer(2,player).subscribe((data: Jogador) => {
+    //   console.log(data);
+    // })
+
+    // BUSCAR UMA CARTA 
+    // this.meuServico.getOnePlayer(2).subscribe((data: Jogador) => {
+    //   console.log(data)
+    // })
+
   }
 
   listaDeJogadores!: Array<Jogador>;
@@ -28,16 +51,19 @@ export class JogadoresPageComponent implements OnInit {
 
 }
 
-class Jogador{
-
+export class Jogador{
+  id!: number;
   nome!: String;
   numVitoria!: number;
   numDerrota!: number;
+  senha!: String;
 
-  constructor(nome:String, numVitoria: number, numDerrota: number) {
+  constructor(nome:String, numVitoria: number, numDerrota: number, senha?:String) {
     this.nome = nome;
     this.numVitoria = numVitoria;
     this.numDerrota = numDerrota;
-    
+    this.senha = senha || "";
   }
+  
+
 }

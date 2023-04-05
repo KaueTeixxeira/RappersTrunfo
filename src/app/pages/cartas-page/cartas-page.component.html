@@ -3,7 +3,7 @@
 <div class="container-cartas">
     <app-carta-component *ngFor="let carta of listaDeCartas">
         <img [src]="carta.url" class="foto-rapper">
-        <p class="nome-rapper"><strong>{{carta.nomeCarta}}</strong></p>
+        <p class="nome-rapper"><strong>{{carta.nome}}</strong></p>
         <p class="freestyle">Freestyle: {{carta.freestyle}}</p>
         <p class="originalidade">Originalidade: {{carta.originalidade}}</p>
         <p class="impacto">Impacto: {{carta.impacto}}</p>

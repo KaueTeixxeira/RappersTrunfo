@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MeuServico } from 'src/app/app.service';
+import { CartaService } from 'src/app/service/carta.service';
+import { JogadorService } from 'src/app/service/jogador.service';
+import { Jogador, JogadoresPageComponent } from '../jogadores-page/jogadores-page.component';
+import { Carta } from '../cartas-page/cartas-page.component';
 
 @Component({
   selector: 'app-edicao-page',
@@ -8,19 +12,28 @@ import { MeuServico } from 'src/app/app.service';
 })
 export class EdicaoPageComponent implements OnInit {
 
-  constructor(private meuServico: MeuServico) { }
+  constructor(private cartaSevice: CartaService, private jogadorService : JogadorService) { }
 
   ngOnInit(): void {
-    
+    this.cartaSevice.getAllCards().subscribe((data: Array<Carta>) => {
+      this.listaDeCartas = data;
+    });
+
+    this.jogadorService.getAllPlayers().subscribe((data: Array<Jogador>) => {
+      this.listaDeJogadores = data;
+    });
   }
   modalCartas: boolean = false
   modalJogadores: boolean = false
   modalEdicaoCartas: boolean = false
   modalEdicaoJogador: boolean = false
-  listaDeCartas: Array<Carta> = this.meuServico.listaDeCartas
-  listaDeJogadores: Array<Jogador> = this.meuServico.listaDeUsuarios
-  carta: Carta = {url: "", nomeCarta: "", freestyle: 0, originalidade: 0, impacto: 0, maisOuvidas: 0,ranking: 'C'};
-  jogador: Jogador = {nome: "",numVitoria: 0, numDerrota: 0};
+
+  listaDeCartas!: Array<Carta>;
+  listaDeJogadores!: Array<Jogador>;
+
+  carta: Carta = new Carta("","",0,0,0,0,"");
+  jogador: Jogador= new Jogador("",0,0);
+
   verificacao!: boolean;
   criacao!: boolean;
   
@@ -67,32 +80,18 @@ export class EdicaoPageComponent implements OnInit {
   
   criarJogador(){
     this.verificacao = false
-    this.jogador = {nome: "",numVitoria: 0, numDerrota: 0};
+    // this.jogador = {nome: "",numVitoria: 0, numDerrota: 0};
     this.modalEdicaoCartas = !this.modalEdicaoCartas
   }
 
 
   criarCarta(){
     this.verificacao = true
-    this.carta = {url: "", nomeCarta: "", freestyle: 0, originalidade: 0, impacto: 0, maisOuvidas: 0,ranking: 'C'}
+    // this.carta = {url: "", nome: "", freestyle: 0, originalidade: 0, impacto: 0, maisOuvidas: 0,ranking: 'C'}
     this.modalEdicaoCartas = !this.modalEdicaoCartas
   }
 
 }
 
 
-interface Carta {
-  url: string;
-  nomeCarta: string;
-  freestyle: number;
-  originalidade: number;
-  impacto: number;
-  maisOuvidas: number;
-  ranking: string;
-}
 
-interface Jogador{
-  nome: string;
-  numVitoria: number;
-  numDerrota: number;
-}

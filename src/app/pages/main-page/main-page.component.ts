@@ -15,7 +15,6 @@ export class MainPageComponent implements OnInit {
     // if (this.usuario == "Kauê") {
     //   this.itens.push({ titulo: "/assets/imagens/editarLogoP.png", rota: "/main-page" })
     // }
-    console.log(this.itens)
   }
 
 

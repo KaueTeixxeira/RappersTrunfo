@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { MeuServico } from 'src/app/app.service';
+import { Carta } from 'src/app/pages/cartas-page/cartas-page.component';
+import { Jogador } from 'src/app/pages/jogadores-page/jogadores-page.component';
 
 @Component({
   selector: 'app-edicao-component',
@@ -23,16 +25,17 @@ export class EdicaoComponentComponent implements OnInit {
   maisOuvidas!: number;
   ranking!: string;
 
-  nome!: string;
+  nome!: String;
   numVitoria!: number;
   numDerrota!: number;
 
 
   ngOnInit(): void {
-    if (this.carta.nomeCarta != "" || this.jogador.nome != "") {
+    if (this.carta.nome != "" || this.jogador.nome != "") {
+      console.log(this.carta.id)
       console.log(this.verificacao)
       this.url = this.carta.url
-      this.nomeCarta = this.carta.nomeCarta
+      this.nomeCarta = this.carta.nome
       this.freestyle = this.carta.freestyle
       this.originalidade = this.carta.originalidade
       this.impacto = this.carta.impacto
@@ -53,20 +56,8 @@ export class EdicaoComponentComponent implements OnInit {
   }
 
   adicionarCarta() {
-    // this.meuServico.listaDeCartas.forEach((carta, index) => {
-    //   if (carta.nomeCarta == this.carta.nomeCarta) {
-    //     this.meuServico.listaDeCartas.splice(index, 1)
-    //   }
-    // });
-    // this.meuServico.listaDeCartas.push({
-    //   url: this.url, nomeCarta: this.nomeCarta, freestyle: this.freestyle, originalidade: this.originalidade,
-    //   impacto: this.impacto, maisOuvidas: this.maisOuvidas, ranking: this.ranking
-    // })
-    console.log("fé")
-    this.meuServico.createCarta(this.carta).subscribe();
+    console.log(this.carta)
     // VERIFICAR ESSA PARTE, A CARTA ESTÁ INDO VAZIA !!!!
-    
-    console.log("fé2")
     this.frase = "Carta cadastrada com sucesso!"
     this.modalzera();
   }
@@ -77,14 +68,14 @@ export class EdicaoComponentComponent implements OnInit {
         this.meuServico.listaDeUsuarios.splice(index, 1)
       }
     });
-    this.meuServico.listaDeUsuarios.push({ nome: this.nome, numVitoria: this.numVitoria, numDerrota: this.numDerrota })
+    // this.meuServico.listaDeUsuarios.push({ nome: this.nome, numVitoria: this.numVitoria, numDerrota: this.numDerrota })
     this.frase = "Jogador cadastrado com sucesso!"
     this.modalzera();
   }
 
   excluirCarta() {
     this.meuServico.listaDeCartas.forEach((carta, index) => {
-      if (carta.nomeCarta == this.carta.nomeCarta) {
+      if (carta.nomeCarta == this.carta.nome) {
         this.meuServico.listaDeCartas.splice(index, 1)
         this.frase = "Carta excluída!"
         this.modalzera();
@@ -110,7 +101,7 @@ export class EdicaoComponentComponent implements OnInit {
   carta!: Carta;
 
   @Input()
-  jogador!: Jogador
+  jogador!: Jogador;
 
   modalzera(){
     this.alertBoolean = !this.alertBoolean
@@ -120,22 +111,7 @@ export class EdicaoComponentComponent implements OnInit {
 
 }
 
-interface Carta {
-  url: string;
-  nomeCarta: string;
-  freestyle: number;
-  originalidade: number;
-  impacto: number;
-  maisOuvidas: number;
-  ranking: string;
-}
 
-
-interface Jogador {
-  nome: string;
-  numVitoria: number;
-  numDerrota: number;
-}
 
 
 
