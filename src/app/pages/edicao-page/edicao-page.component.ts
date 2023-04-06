@@ -80,14 +80,14 @@ export class EdicaoPageComponent implements OnInit {
   
   criarJogador(){
     this.verificacao = false
-    // this.jogador = {nome: "",numVitoria: 0, numDerrota: 0};
+    this.jogador = {id: 0,nome: "",numVitoria: 0, numDerrota: 0, senha:""};
     this.modalEdicaoCartas = !this.modalEdicaoCartas
   }
 
 
   criarCarta(){
     this.verificacao = true
-    // this.carta = {url: "", nome: "", freestyle: 0, originalidade: 0, impacto: 0, maisOuvidas: 0,ranking: 'C'}
+    this.carta = {id: 0, url: "", nome: "", freestyle: 0, originalidade: 0, impacto: 0, maisOuvidas: 0,ranking: 'C'}
     this.modalEdicaoCartas = !this.modalEdicaoCartas
   }
 

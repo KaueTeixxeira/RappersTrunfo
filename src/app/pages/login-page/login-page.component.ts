@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { Howl } from 'howler';
 import { MeuServico } from 'src/app/app.service';
+import { SessionStorageService } from 'src/app/service/session-storage.service';
 
 @Component({
   selector: 'app-login-page',
@@ -11,13 +12,14 @@ import { MeuServico } from 'src/app/app.service';
 export class LoginPageComponent implements OnInit {
 
 
-  constructor(private dadosCompartilhados: MeuServico, private route: Router) { }
+  constructor(private dadosCompartilhados: MeuServico, private route: Router, private perfilGuard: SessionStorageService) { }
 
   minhaArray: Array<Usuario> = new Array(new Usuario("Kauê", "123"), new Usuario("Gabriel", "321"));
 
 
   ngOnInit(): void {
-    
+    const perfil = { nome: 'João', idade: 30 };
+    this.perfilGuard.setItem('perfil', perfil);
   }
   
 
@@ -27,7 +29,7 @@ export class LoginPageComponent implements OnInit {
   enviarDados() {
     this.minhaArray.forEach(usuario => {
       if (usuario.senha === this.senha && usuario.usuario === this.usuario) {
-        console.log(usuario)
+        console.log(this.perfilGuard.getItem("perfil"))
         this.dadosCompartilhados.atualizarDados(this.usuario, this.senha, 0, 0)
         this.route.navigate(['/main-page'])
       }

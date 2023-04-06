@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
 import { MeuServico } from 'src/app/app.service';
 import { Carta } from 'src/app/pages/cartas-page/cartas-page.component';
 import { Jogador } from 'src/app/pages/jogadores-page/jogadores-page.component';
+import { CartaService } from 'src/app/service/carta.service';
+import { JogadorService } from 'src/app/service/jogador.service';
 
 @Component({
   selector: 'app-edicao-component',
@@ -11,7 +12,7 @@ import { Jogador } from 'src/app/pages/jogadores-page/jogadores-page.component';
 })
 export class EdicaoComponentComponent implements OnInit {
 
-  constructor(private meuServico: MeuServico, private route: Router) { }
+  constructor(private cartaService: CartaService, private jogadorService: JogadorService) { }
 
   alertBoolean: boolean = false
   habilitado: boolean = false
@@ -28,9 +29,11 @@ export class EdicaoComponentComponent implements OnInit {
   nome!: String;
   numVitoria!: number;
   numDerrota!: number;
+  senha!: String;
 
 
   ngOnInit(): void {
+
     if (this.carta.nome != "" || this.jogador.nome != "") {
       console.log(this.carta.id)
       console.log(this.verificacao)
@@ -52,45 +55,59 @@ export class EdicaoComponentComponent implements OnInit {
       this.nome = this.jogador.nome
       this.numVitoria = this.jogador.numVitoria
       this.numDerrota = this.jogador.numDerrota
-    } 
+    }
   }
 
   adicionarCarta() {
-    console.log(this.carta)
-    // VERIFICAR ESSA PARTE, A CARTA ESTÁ INDO VAZIA !!!!
-    this.frase = "Carta cadastrada com sucesso!"
+    let carta = new Carta(this.url,this.nomeCarta,this.freestyle,
+      this.originalidade,this.impacto,this.maisOuvidas,this.ranking);
+
+    if (this.carta.id === 0) {
+      this.cartaService.createCard(carta).subscribe((data: Carta) => {
+        console.log(data)
+        
+      })
+      this.frase = "Carta cadastrada com sucesso!"
+    } else {
+      this.cartaService.editCard(this.carta.id,carta).subscribe((data: Carta) => {
+        console.log(data)
+      })
+      this.frase = "Carta editada com sucesso!"
+    }
     this.modalzera();
   }
 
   adicionarJogador() {
-    this.meuServico.listaDeUsuarios.forEach((jogador, index) => {
-      if (jogador.nome == this.jogador.nome) {
-        this.meuServico.listaDeUsuarios.splice(index, 1)
-      }
-    });
+    let jogador = new Jogador(this.nome, this.numVitoria,this.numDerrota)
     // this.meuServico.listaDeUsuarios.push({ nome: this.nome, numVitoria: this.numVitoria, numDerrota: this.numDerrota })
-    this.frase = "Jogador cadastrado com sucesso!"
+    if (this.jogador.id === 0){
+      this.jogadorService.createPlayer(jogador).subscribe((data: Jogador) => {
+        console.log(data)
+      })
+      this.frase = "Jogador cadastrado com sucesso!"
+    } else {
+      this.jogadorService.editPlayer(this.jogador.id, jogador).subscribe((data: Jogador) => {
+        console.log(data)
+      })
+      this.frase = "Jogador editado com sucesso!"
+    }
     this.modalzera();
   }
 
   excluirCarta() {
-    this.meuServico.listaDeCartas.forEach((carta, index) => {
-      if (carta.nomeCarta == this.carta.nome) {
-        this.meuServico.listaDeCartas.splice(index, 1)
-        this.frase = "Carta excluída!"
-        this.modalzera();
-      }
-    });
+    this.cartaService.deleteCard(this.carta.id).subscribe((data: Carta) => {
+      console.log(data)
+    })
+    this.frase = "Carta excluída com sucesso!"
+    this.modalzera();
   }
 
   excluirJogador(){
-    this.meuServico.listaDeUsuarios.forEach((jogador, index) => {
-      if (jogador.nome == this.jogador.nome) {
-        this.meuServico.listaDeUsuarios.splice(index, 1)
-        this.frase = "Jogador excluída!"
-        this.modalzera();
-      }
-    });
+   this.jogadorService.deletePlayer(this.jogador.id).subscribe((data: Carta) => {
+    console.log(data)
+  })
+  this.frase = "Jogador excluído com sucesso!"
+  this.modalzera();
 
   }
 
