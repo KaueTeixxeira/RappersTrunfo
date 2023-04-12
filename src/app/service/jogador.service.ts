@@ -18,7 +18,7 @@ export class JogadorService {
         return this.httpClient.get<any>(this.apiUrl + "/all")
     }
 
-    getOnePlayer(id: Number): Observable<any>{ // Buscar uma
+    getOnePlayer(id: String): Observable<any>{ // Buscar uma
         return this.httpClient.get(this.apiUrl + "/" + id)
     }
 

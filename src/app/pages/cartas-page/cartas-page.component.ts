@@ -28,10 +28,10 @@ export class CartasPageComponent implements OnInit {
     // })
 
    
-    let carta: Carta = new Carta("https://i.scdn.co/image/170254ebdd747f4e7045df1cae8f11a42dc1a547","Dr.Dre",87,96,98,75,"S");
-    this.meuServico.createCard(carta).subscribe((data: Carta) => {
-      console.log(data)
-    })
+    // let carta: Carta = new Carta("https://i.scdn.co/image/170254ebdd747f4e7045df1cae8f11a42dc1a547","Dr.Dre",87,96,98,75,"S");
+    // this.meuServico.createCard(carta).subscribe((data: Carta) => {
+    //   console.log(data)
+    // })
 
     // EDITAR
     // let carta: Carta = new Carta("https://i.scdn.co/image/170254ebdd747f4e7045df1cae8f11a42dc1a547","Dr.Dre",87,96,98,75,"A");
