@@ -15,13 +15,7 @@ export class EdicaoPageComponent implements OnInit {
   constructor(private cartaSevice: CartaService, private jogadorService : JogadorService) { }
 
   ngOnInit(): void {
-    this.cartaSevice.getAllCards().subscribe((data: Array<Carta>) => {
-      this.listaDeCartas = data;
-    });
-
-    this.jogadorService.getAllPlayers().subscribe((data: Array<Jogador>) => {
-      this.listaDeJogadores = data;
-    });
+    this.refresh();
   }
   modalCartas: boolean = false
   modalJogadores: boolean = false
@@ -91,6 +85,17 @@ export class EdicaoPageComponent implements OnInit {
     this.modalEdicaoCartas = !this.modalEdicaoCartas
   }
 
+  // FAZER UM BOTAO DE OUT PUT PARA DAR REFRESH NAS CARTAS E JOGADORES ASSIM QUE CRIADOS OU EDITADOS !!!!
+
+  refresh() {
+    this.cartaSevice.getAllCards().subscribe((data: Array<Carta>) => {
+      this.listaDeCartas = data;
+    });
+
+    this.jogadorService.getAllPlayers().subscribe((data: Array<Jogador>) => {
+      this.listaDeJogadores = data;
+    });
+  }
 }
 
 
