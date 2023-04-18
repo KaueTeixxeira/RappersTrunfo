@@ -1,7 +1,7 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { MeuServico } from 'src/app/app.service';
 import { LoginPageComponent } from '../login-page/login-page.component';
-import { Jogador } from '../jogadores-page/jogadores-page.component';
+import { Jogador } from 'src/app/interfaces/Jogador';
 
 @Component({
   selector: 'app-main-page',

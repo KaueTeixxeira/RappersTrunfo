@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { MeuServico } from 'src/app/app.service';
 import { CartaService } from 'src/app/service/carta.service';
 import { JogadorService } from 'src/app/service/jogador.service';
-import { Jogador, JogadoresPageComponent } from '../jogadores-page/jogadores-page.component';
-import { Carta } from '../cartas-page/cartas-page.component';
+import { JogadoresPageComponent } from '../jogadores-page/jogadores-page.component';
+import { Carta } from 'src/app/interfaces/Carta';
+import { Jogador } from 'src/app/interfaces/Jogador';
+
 
 @Component({
   selector: 'app-edicao-page',
@@ -25,8 +27,8 @@ export class EdicaoPageComponent implements OnInit {
   listaDeCartas!: Array<Carta>;
   listaDeJogadores!: Array<Jogador>;
 
-  carta: Carta = new Carta("","",0,0,0,0,"");
-  jogador: Jogador= new Jogador("",0,0);
+  carta: Carta = {id: 0, url: "", nome: "", freestyle: 0, originalidade: 0, impacto: 0, maisOuvidas: 0,ranking: 'C'}; 
+  jogador: Jogador = {id: 0,nome: "",numVitoria: 0, numDerrota: 0, senha:""};
 
   verificacao!: boolean;
   criacao!: boolean;
@@ -74,14 +76,14 @@ export class EdicaoPageComponent implements OnInit {
   
   criarJogador(){
     this.verificacao = false
-    this.jogador = {id: 0,nome: "",numVitoria: 0, numDerrota: 0, senha:""};
+    this.jogador = {id: 0,nome: "",numVitoria: 0, numDerrota: 0, senha:""};;
     this.modalEdicaoCartas = !this.modalEdicaoCartas
   }
 
 
   criarCarta(){
     this.verificacao = true
-    this.carta = {id: 0, url: "", nome: "", freestyle: 0, originalidade: 0, impacto: 0, maisOuvidas: 0,ranking: 'C'}
+    this.carta = {id: 0, url: "", nome: "", freestyle: 0, originalidade: 0, impacto: 0, maisOuvidas: 0,ranking: 'C'};
     this.modalEdicaoCartas = !this.modalEdicaoCartas
   }
 

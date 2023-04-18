@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable, take } from 'rxjs';
 import { CartaComponentComponent } from '../components/carta-component/carta-component.component';
-import { Carta, CartasPageComponent } from '../pages/cartas-page/cartas-page.component';
-import { Jogador } from '../pages/jogadores-page/jogadores-page.component';
+import { CartasPageComponent } from '../pages/cartas-page/cartas-page.component';
+import { Jogador } from '../interfaces/Jogador';
 
 @Injectable({
   providedIn: 'root'

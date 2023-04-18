@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { MeuServico } from 'src/app/app.service';
-import { Carta } from 'src/app/pages/cartas-page/cartas-page.component';
-import { Jogador } from 'src/app/pages/jogadores-page/jogadores-page.component';
+import { Carta } from 'src/app/interfaces/Carta';
+import { Jogador } from 'src/app/interfaces/Jogador';
 import { CartaService } from 'src/app/service/carta.service';
 import { JogadorService } from 'src/app/service/jogador.service';
 
@@ -59,8 +59,15 @@ export class EdicaoComponentComponent implements OnInit {
   }
 
   adicionarCarta() {
-    let carta = new Carta(this.url,this.nomeCarta,this.freestyle,
-      this.originalidade,this.impacto,this.maisOuvidas,this.ranking);
+    let carta : Carta = {
+      id: 0,
+      url : this.url,
+      freestyle: this.freestyle,
+      originalidade: this.originalidade,
+      impacto: this.impacto,
+      maisOuvidas: this.maisOuvidas,
+      nome: this.nomeCarta,
+      ranking: this.ranking};
 
     if (this.carta.id === 0) {
       this.cartaService.createCard(carta).subscribe((data: Carta) => {
@@ -78,8 +85,15 @@ export class EdicaoComponentComponent implements OnInit {
   }
 
   adicionarJogador() {
-    let jogador = new Jogador(this.nome, this.numVitoria,this.numDerrota)
-    // this.meuServico.listaDeUsuarios.push({ nome: this.nome, numVitoria: this.numVitoria, numDerrota: this.numDerrota })
+    let jogador: Jogador = {
+      id: 0,
+      nome: this.nome,
+      numVitoria: this.numVitoria,
+      numDerrota: this.numDerrota,
+      senha: this.senha
+
+    } 
+    
     if (this.jogador.id === 0){
       this.jogadorService.createPlayer(jogador).subscribe((data: Jogador) => {
         console.log(data)
@@ -119,12 +133,13 @@ export class EdicaoComponentComponent implements OnInit {
 
   @Input()
   jogador!: Jogador;
+  
+  @Output() refreshEmitter: EventEmitter<any> = new EventEmitter()
 
   modalzera(){
     this.alertBoolean = !this.alertBoolean
+    this.refreshEmitter.emit()
   }
-  
-
 
 }
 

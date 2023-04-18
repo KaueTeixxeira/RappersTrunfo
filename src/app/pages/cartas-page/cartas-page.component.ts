@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MeuServico } from 'src/app/app.service';
+import { Carta } from 'src/app/interfaces/Carta';
 import { CartaService } from 'src/app/service/carta.service';
 
 @Component({
@@ -42,28 +43,4 @@ export class CartasPageComponent implements OnInit {
     
   }
 
-}
-
-export class Carta {
-  id!: number;
-  freestyle!: number;
-  originalidade!: number;
-  impacto!: number;
-  maisOuvidas!: number;
-  nome!: string;
-  ranking!: string;
-  url!: string;
-
-
-  constructor(url: string, nomeCarta: string, freestyle: number, originalidade: number, impacto: number,
-     maisOuvidas: number, ranking: string)
-  {
-    this.url = url;
-    this.nome = nomeCarta;
-    this.freestyle = freestyle
-    this.originalidade = originalidade
-    this.impacto = impacto
-    this.maisOuvidas = maisOuvidas
-    this.ranking = ranking
-  }
 }

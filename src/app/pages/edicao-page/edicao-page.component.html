@@ -4,7 +4,7 @@
 
         <div class="modal-cartas" *ngIf="modalEdicaoCartas"> <!-- 1-2.3 -->
             <button (click)="fecharEdicaoCartas()" class="fechar">X</button>
-            <app-edicao-component [verificacao]="verificacao" [carta]="carta" [jogador]="jogador"></app-edicao-component>
+            <app-edicao-component [verificacao]="verificacao" [carta]="carta" [jogador]="jogador" (refreshEmitter)="refresh()"></app-edicao-component>
         </div>
 
         <div class="modal-cartas" *ngIf="modalCartas && !modalEdicaoCartas"> <!-- 1.2 -->

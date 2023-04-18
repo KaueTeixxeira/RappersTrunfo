@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MeuServico } from 'src/app/app.service';
+import { Jogador } from 'src/app/interfaces/Jogador';
 import { JogadorService } from 'src/app/service/jogador.service';
 
 @Component({
@@ -51,19 +52,4 @@ export class JogadoresPageComponent implements OnInit {
 
 }
 
-export class Jogador{
-  id!: number;
-  nome!: String;
-  numVitoria!: number;
-  numDerrota!: number;
-  senha!: String;
 
-  constructor(nome:String, numVitoria: number, numDerrota: number, senha?:String) {
-    this.nome = nome;
-    this.numVitoria = numVitoria;
-    this.numDerrota = numDerrota;
-    this.senha = senha || "";
-  }
-  
-
-}
