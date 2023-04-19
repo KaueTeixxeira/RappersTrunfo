@@ -59,7 +59,7 @@ export class EdicaoComponentComponent implements OnInit {
   }
 
   adicionarCarta() {
-    let carta : Carta = {
+    let card : Carta = {
       id: 0,
       url : this.url,
       freestyle: this.freestyle,
@@ -67,16 +67,16 @@ export class EdicaoComponentComponent implements OnInit {
       impacto: this.impacto,
       maisOuvidas: this.maisOuvidas,
       nome: this.nomeCarta,
-      ranking: this.ranking};
+      ranking: this.ranking}
+      console.log(this.carta + "AAA")
 
     if (this.carta.id === 0) {
-      this.cartaService.createCard(carta).subscribe((data: Carta) => {
+      this.cartaService.createCard(card).subscribe((data: Carta) => {
         console.log(data)
-        
       })
       this.frase = "Carta cadastrada com sucesso!"
     } else {
-      this.cartaService.editCard(this.carta.id,carta).subscribe((data: Carta) => {
+      this.cartaService.editCard(this.carta.id,card).subscribe((data: Carta) => {
         console.log(data)
       })
       this.frase = "Carta editada com sucesso!"
@@ -85,22 +85,21 @@ export class EdicaoComponentComponent implements OnInit {
   }
 
   adicionarJogador() {
-    let jogador: Jogador = {
+    let player: Jogador = {
       id: 0,
       nome: this.nome,
       numVitoria: this.numVitoria,
       numDerrota: this.numDerrota,
       senha: this.senha
-
     } 
     
     if (this.jogador.id === 0){
-      this.jogadorService.createPlayer(jogador).subscribe((data: Jogador) => {
+      this.jogadorService.createPlayer(player).subscribe((data: Jogador) => {
         console.log(data)
       })
       this.frase = "Jogador cadastrado com sucesso!"
     } else {
-      this.jogadorService.editPlayer(this.jogador.id, jogador).subscribe((data: Jogador) => {
+      this.jogadorService.editPlayer(this.jogador.id, player).subscribe((data: Jogador) => {
         console.log(data)
       })
       this.frase = "Jogador editado com sucesso!"
@@ -142,8 +141,3 @@ export class EdicaoComponentComponent implements OnInit {
   }
 
 }
-
-
-
-
-
