@@ -43,15 +43,15 @@ export class PerfilPageComponent implements OnInit {
   editaPerfil() {
     if (this.senhaPerfil == this.senha && this.senhaPerfil != this.senha && this.senha != null){
       this.informacoes = sessionStorage.getItem("perfil")
-      let jogador = {
+      let player = {
         id: this.informacoes.id,
         nome: this.nome,
         numVitoria: this.informacoes.numVitoria,
         numDerrota: this.informacoes.numDerrota,
         senha: this.senha
       } 
-      this.perfilGuard.setItem('perfil', jogador);
-      this.jogadorService.editPlayer(this.informacoes.id, jogador).subscribe((data: Jogador) => {
+      this.perfilGuard.setItem('perfil', player);
+      this.jogadorService.editPlayer(this.informacoes.id, player).subscribe((data: Jogador) => {
         console.log(data)
       })
     }
