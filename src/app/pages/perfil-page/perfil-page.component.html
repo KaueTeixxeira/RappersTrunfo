@@ -1,9 +1,19 @@
 <app-header-component></app-header-component>
 <div class="div-perfil">
-    <app-jogador-component>
+    <app-jogador-component *ngIf="visualizar">
         <p>Nome: {{nome}}</p>
         <p>Vitórias: {{this.numVitoria}}</p>
         <p>Derrotas: {{this.numDerrota}}</p>
         <p>Win rate: {{this.porcVitoria}}</p>
+        <button class="btn fifth" (click)="editaPerfil()">Editar</button>
     </app-jogador-component>
+    <div class="container-central"  *ngIf="!visualizar">
+        <form>
+            <h1>Editar Perfil</h1>
+            <input type="text" placeholder="Nome de usuário" name="usuario" class="form-control" [(ngModel)]="nome">
+            <input type="password" class="form-control"  placeholder="Senha antiga" name="senha" [(ngModel)]="senha">
+            <input type="password" class="form-control" placeholder="Nova senha">
+            <button class="btn fifth"(click)="editaPerfil()">Criar conta</button>
+        </form>
+    </div>
 </div>

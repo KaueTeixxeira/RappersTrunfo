@@ -1,7 +1,7 @@
 .div-jogador {
     display: flex;
-    width: 200px;
-    height: 220px;
+    width: 100%;
+    height: 100%;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
@@ -9,5 +9,9 @@
     background-color: black;
     flex-direction: column;
     margin: 30px;
+}
+
+.centro {
+    padding: 30px;
 }
 
