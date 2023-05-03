@@ -32,7 +32,6 @@ export class LoginPageComponent implements OnInit {
     // this.jogadorService.getOnePlayer(this.usuario)
     this.jogadorService.getOnePlayer(this.usuario).subscribe((jogador: Jogador) => {
       if (jogador != null) {
-        console.log(jogador)
         if(jogador.nome === this.usuario && jogador.senha === this.senha){
           this.perfilGuard.setItem('perfil', jogador);
           this.route.navigate(['/main-page'])

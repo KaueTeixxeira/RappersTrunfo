@@ -82,3 +82,60 @@
   h1{
     color: #fff;
   }
+
+
+
+  .alert {
+    margin-top: 15px;
+    opacity: 1;
+    transition-duration: 1.3s;
+    position: absolute;
+    padding: 20px;
+    background-color: #5ea762;
+    color: white;
+  }
+  
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }
+  
+  .div-botoes {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .div-alert {
+    display: flex;
+    justify-content: center;
+  }
+
+  .fechar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background-color: #fff;
+    font-weight: 900;
+    position:initial;
+    float: right;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    transition-duration: .5s;
+}
+.fechar:hover {
+    transition-duration: .5s;
+    background-color: #e5e5e5;
+    transition: scale(1.3);
+}
