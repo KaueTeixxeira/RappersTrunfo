@@ -17,6 +17,8 @@ import { PerfilPageComponent } from './pages/perfil-page/perfil-page.component';
 import { EdicaoPageComponent } from './pages/edicao-page/edicao-page.component';
 import { EdicaoComponentComponent } from './components/edicao-component/edicao-component.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ExitButtonComponent } from './components/exit-button/exit-button.component';
+import { GamePageComponent } from './pages/game-page/game-page.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { HttpClientModule } from '@angular/common/http';
     JogadorComponentComponent,
     PerfilPageComponent,
     EdicaoPageComponent,
-    EdicaoComponentComponent
+    EdicaoComponentComponent,
+    ExitButtonComponent,
+    GamePageComponent
   ],
   imports: [
     FormsModule,

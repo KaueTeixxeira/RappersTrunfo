@@ -1,6 +1,6 @@
 <app-header-component></app-header-component>
+<app-exit-button (refreshEmitter)="exit()" ></app-exit-button>
 <div class="div-perfil">
-    
     <app-jogador-component *ngIf="visualizar">
         <p>Nome: {{nome}}</p>
         <p>Vitórias: {{this.numVitoria}}</p>
@@ -10,7 +10,7 @@
     </app-jogador-component>
     <div class="container-central" *ngIf="!visualizar">
         <div class="div-alert" *ngIf="alertBoolean">
-            <div #alert class="alert" id="alert">
+            <div #alert class="alert" [ngStyle]="{'background-color': alertColor}" id="alert">
                 <span class="closebtn" (click)="modalzera()">&times;</span>
                 {{frase}}
             </div>
@@ -19,10 +19,8 @@
             <button (click)="editaPerfil()" class="fechar">X</button>
             <h1>Editar Perfil</h1>
             <input type="text" placeholder="Nome de usuário" name="usuario" class="form-control" [(ngModel)]="nome">
-            <input type="password" class="form-control" placeholder="Senha antiga" name="senha" [(ngModel)]="senha">
-            <input type="password" class="form-control" placeholder="Nova senha" name="novaSenha"
-                [(ngModel)]="novaSenha">
-            <button class="btn fifth" (click)="postEdicoes()" form="forms">Salvar alterações</button>
+            <input type="password" class="form-control" placeholder="Senha" name="senha" [(ngModel)]="senha">
+            <button class="btn fifth" type="button" (click)="postEdicoes()" form="forms">Salvar</button>
         </form>
     </div>
 </div>

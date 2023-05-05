@@ -55,8 +55,8 @@
 .container-central {
     display: flex;
     flex-direction: column;
-    width: 400px;
-    height: 370px;
+    width: 24em;
+    height: 18em;
     border-radius: 10px;
     background-color: #1c2b4b;
     align-items: center;
@@ -81,6 +81,7 @@
 
   h1{
     color: #fff;
+    height: fit-content;
   }
 
 
@@ -91,7 +92,6 @@
     transition-duration: 1.3s;
     position: absolute;
     padding: 20px;
-    background-color: #5ea762;
     color: white;
   }
   

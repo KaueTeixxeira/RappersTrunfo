@@ -17,10 +17,8 @@ export class LoginPageComponent implements OnInit {
   constructor(private jogadorService: JogadorService, private route: Router, private perfilGuard: SessionStorageService) { }
   logar = true
 
-
   ngOnInit(): void {
-  }
-  
+  }  
 
   usuario!: string;
   senha: string = ""

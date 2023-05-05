@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { MeuServico } from 'src/app/app.service';
 import { Jogador } from 'src/app/interfaces/Jogador';
 import { JogadorService } from 'src/app/service/jogador.service';
@@ -10,7 +11,7 @@ import { JogadorService } from 'src/app/service/jogador.service';
 })
 export class JogadoresPageComponent implements OnInit {
 
-  constructor(private meuServico: JogadorService) { }
+  constructor(private meuServico: JogadorService, private route: Router) { }
 
   ngOnInit(): void {
     this.meuServico.getAllPlayers().subscribe((data: Array<Jogador>) => {
@@ -50,6 +51,9 @@ export class JogadoresPageComponent implements OnInit {
     return "0%"
   }
 
+  exit(){
+    this.route.navigate(['/main-page'])
+  }
 }
 
 

@@ -5,6 +5,7 @@ import { JogadorService } from 'src/app/service/jogador.service';
 import { JogadoresPageComponent } from '../jogadores-page/jogadores-page.component';
 import { Carta } from 'src/app/interfaces/Carta';
 import { Jogador } from 'src/app/interfaces/Jogador';
+import { Route, Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { Jogador } from 'src/app/interfaces/Jogador';
 })
 export class EdicaoPageComponent implements OnInit {
 
-  constructor(private cartaSevice: CartaService, private jogadorService : JogadorService) { }
+  constructor(private cartaSevice: CartaService, private jogadorService : JogadorService,private route: Router) { }
 
   ngOnInit(): void {
     this.refresh();
@@ -97,6 +98,11 @@ export class EdicaoPageComponent implements OnInit {
     this.jogadorService.getAllPlayers().subscribe((data: Array<Jogador>) => {
       this.listaDeJogadores = data;
     });
+    console.log("Branh new")
+  }
+
+  exit(){
+    this.route.navigate(['/main-page'])
   }
 }
 

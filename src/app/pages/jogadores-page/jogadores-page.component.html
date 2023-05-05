@@ -1,5 +1,6 @@
 <div class="corpo">
     <app-header-component></app-header-component>
+    <app-exit-button (refreshEmitter)="exit()" ></app-exit-button>
     <div class="container-jogadores">
         <app-jogador-component *ngFor="let jogador of listaDeJogadores">
             <p>Nome: {{jogador.nome}}</p>

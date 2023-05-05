@@ -11,7 +11,7 @@ import { Jogador } from 'src/app/interfaces/Jogador';
 export class MainPageComponent implements OnInit {
 
   ngOnInit(): void {
-    this.itens = [{ titulo: "/assets/imagens/jogarLogoP.png", rota: "/main-page" }, { titulo: "/assets/imagens/cartasLogoP.png", rota: "/cartas-page" }, { titulo: "/assets/imagens/jgoadoresLogoP.png", rota: "/jogadores-page" }, 
+    this.itens = [{ titulo: "/assets/imagens/jogarLogoP.png", rota: "/game-page" }, { titulo: "/assets/imagens/cartasLogoP.png", rota: "/cartas-page" }, { titulo: "/assets/imagens/jgoadoresLogoP.png", rota: "/jogadores-page" }, 
     { titulo: "/assets/imagens/perfilLogoP.png", rota: "/perfil-page" }];
     this.informacoes = sessionStorage.getItem("perfil");
     this.jogador = JSON.parse(this.informacoes);
@@ -20,38 +20,14 @@ export class MainPageComponent implements OnInit {
     }
   }
 
-
-
   informacoes!: any;
   jogador!: Jogador;
   
   itens!: Array<Item>;
-  usuario: string;
-  senha: string;
-
-  constructor(private meuServico: MeuServico) {
-    this.usuario = this.meuServico.nome;
-    this.senha = this.meuServico.senha;
-  }
-}
-
-class Usuario {
-
-  usuario: string;
-  senha: string;
-
-  constructor(usuario: string, senha: string) {
-    this.usuario = usuario;
-    this.senha = senha;
+  
+  constructor() {
   }
 
-  mostrarDados(): void {
-    console.log(this)
-  }
-
-  mostraNome(): string {
-    return this.usuario;
-  }
 }
 
 interface Item {

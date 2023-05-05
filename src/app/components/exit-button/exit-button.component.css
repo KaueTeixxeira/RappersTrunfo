@@ -1,0 +1,19 @@
+.fechar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background-color: #fff;
+    font-weight: 900;
+    position:initial;
+    float: right;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    transition-duration: .5s;
+}
+.fechar:hover {
+    transition-duration: .5s;
+    background-color: #e5e5e5;
+    transition: scale(1.3);
+}

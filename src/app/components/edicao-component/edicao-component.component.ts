@@ -55,6 +55,7 @@ export class EdicaoComponentComponent implements OnInit {
       this.nome = this.jogador.nome
       this.numVitoria = this.jogador.numVitoria
       this.numDerrota = this.jogador.numDerrota
+      this.senha = this.jogador.senha
     }
   }
 
@@ -92,6 +93,10 @@ export class EdicaoComponentComponent implements OnInit {
       numDerrota: this.numDerrota,
       senha: this.senha
     } 
+    console.log(this.nome)
+    console.log(this.numDerrota)
+    console.log(this.jogador.id)
+    console.log(this.senha)
     
     if (this.jogador.id === 0){
       this.jogadorService.createPlayer(player).subscribe((data: Jogador) => {

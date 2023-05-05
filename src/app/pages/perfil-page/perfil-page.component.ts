@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MeuServico } from 'src/app/app.service';
 import { Jogador } from 'src/app/interfaces/Jogador';
 import { JogadorService } from 'src/app/service/jogador.service';
@@ -14,7 +15,7 @@ export class PerfilPageComponent implements OnInit {
 
 
   visualizar = true;
-  constructor(private meuServico: MeuServico, private perfilGuard: SessionStorageService, private jogadorService: JogadorService) { }
+  constructor(private meuServico: MeuServico, private perfilGuard: SessionStorageService,private route: Router, private jogadorService: JogadorService) { }
 
   id!: number;
   nome!: String ;
@@ -27,10 +28,49 @@ export class PerfilPageComponent implements OnInit {
   informacoes: any;
   jogador!: Jogador;
 
+
   alertBoolean: boolean = false;
+  alertColor: String = "#ffffff";
   frase: String = "Perfil editado com sucesso!"
 
   ngOnInit(): void {
+    this.reloadPerfil();
+  }
+
+  editaPerfil() {
+    this.visualizar = !this.visualizar
+    this.alertBoolean = false;
+    this.reloadPerfil();
+  }
+  modalzera(){
+    this.alertBoolean = !this.alertBoolean
+  }
+  
+  postEdicoes(){//arrumar essa merda de verificação
+    if (this.senha != ""){
+      let player = {
+        id: this.id,
+        nome: this.nome,
+        numVitoria: this.numVitoria,
+        numDerrota: this.numDerrota,
+        senha: this.senha
+      } 
+      this.perfilGuard.setItem('perfil', player);
+      console.log("a : " + this.id)
+      this.jogadorService.editPlayer(this.id, player).subscribe((data: Jogador) => {
+        console.log(data)
+      })
+      this.frase = "Perfil editado com sucesso"
+      this.alertColor = "#5ea762"
+      this.modalzera();
+    } else {
+      this.alertColor = "#f72f32"
+      this.frase = "Senha inválida"
+      this.modalzera();
+    }
+  }
+
+  reloadPerfil(){
     this.informacoes = sessionStorage.getItem("perfil")
     console.log(JSON.parse(this.informacoes))
     this.jogador = JSON.parse(this.informacoes);
@@ -43,38 +83,13 @@ export class PerfilPageComponent implements OnInit {
     } else{
       this.porcVitoria = "0%"
     }
-    this.senhaPerfil = this.jogador.senha
+    this.senha = this.jogador.senha
     this.id = this.jogador.id;
   }
 
-  editaPerfil() {
-    this.visualizar = !this.visualizar
-    this.alertBoolean = false;
-    this.senha = ""
-    this.novaSenha = ""
+  exit(){
+    this.route.navigate(['/main-page'])
   }
-  modalzera(){
-    this.alertBoolean = !this.alertBoolean
-  }
-  
-  postEdicoes(){//arrumar essa merda de verificação
-    if (this.senhaPerfil == this.senha && this.senhaPerfil != this.novaSenha && this.senha != null){
-      let player = {
-        id: this.id,
-        nome: this.nome,
-        numVitoria: this.numVitoria,
-        numDerrota: this.numDerrota,
-        senha: this.novaSenha
-      } 
-      this.perfilGuard.setItem('perfil', player);
-      console.log("a : " + this.id)
-      this.jogadorService.editPlayer(this.id, player).subscribe((data: Jogador) => {
-        console.log(data)
-      })
-      this.modalzera();
-    } 
-  }
-
 }
 
 

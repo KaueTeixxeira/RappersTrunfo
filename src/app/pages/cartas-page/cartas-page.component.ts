@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MeuServico } from 'src/app/app.service';
 import { Carta } from 'src/app/interfaces/Carta';
 import { CartaService } from 'src/app/service/carta.service';
@@ -10,7 +11,7 @@ import { CartaService } from 'src/app/service/carta.service';
 })
 export class CartasPageComponent implements OnInit {
 
-  constructor(private meuServico: CartaService) { }
+  constructor(private meuServico: CartaService, private route: Router) { }
   listaDeCartas!: Array<Carta>;
   ngOnInit(): void {
     this.meuServico.getAllCards().subscribe((data: Array<Carta>) => {
@@ -41,6 +42,10 @@ export class CartasPageComponent implements OnInit {
     // })
       
     
+  }
+
+  exit(){
+    this.route.navigate(['/main-page'])
   }
 
 }
