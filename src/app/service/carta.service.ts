@@ -33,4 +33,8 @@ export class CartaService {
     editCard(id: Number, carta: Carta): Observable<any>{ // Editar carta
         return this.httpClient.put<any>(this.apiUrl + "/edit/" + id, carta);
     }
+
+    starGame(): Observable<any>{ // Retorna uma lista com duas listas de cartas, para serem atribuidas para cada jogador
+        return this.httpClient.get(this.apiUrl);
+    }
 }
