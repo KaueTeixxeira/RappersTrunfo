@@ -1,6 +1,6 @@
 .div-jogador {
     display: flex;
-    width: 100%;
+    width: 200px;
     height: 100%;
     border-radius: 10px;
     justify-content: center;
@@ -9,9 +9,18 @@
     background-color: black;
     flex-direction: column;
     margin: 30px;
+    transition-duration: .5s;
 }
 
 .centro {
     padding: 30px;
+}
+
+.div-jogador:hover {
+    transform: scale(1.05);
+    transition-duration: .5s;
+    color: #000;
+    background-color: #e5e5e5;
+    box-shadow: 10px 10px;
 }
 

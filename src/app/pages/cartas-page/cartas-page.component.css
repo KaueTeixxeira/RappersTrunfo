@@ -22,6 +22,19 @@
     height: 30px;
 }
 p {
-    height: 15px;
+    height: 30px;
+    margin-bottom: 0;
 }
+
+.nome-rapper{
+    margin-top: 5px;
+    padding-bottom: 30px;
+}
+
+.nome-rapper ~p{
+    margin-top: 5px;
+}
+
+
+
 

@@ -1,0 +1,40 @@
+.corpo {
+    height: 100%;
+}
+.container-cartas {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.foto-rapper {
+    width: 230px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.nome-rapper{
+    text-align: center;
+    height: 30px;
+}
+p {
+    height: 30px;
+    margin-bottom: 0;
+}
+
+.nome-rapper{
+    margin-top: 5px;
+    padding-bottom: 30px;
+}
+
+.nome-rapper ~p{
+    margin-top: 5px;
+}
+
+
+
+

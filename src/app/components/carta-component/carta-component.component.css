@@ -10,6 +10,7 @@
     background-color: black;
     transition-duration: .5s;
     margin: 30px;
+    align-content: center;
 }
 
 .imagem {
@@ -36,5 +37,15 @@
     background-color: #e5e5e5;
     box-shadow: 10px 10px;
 }
+
+.div-carta:focus-visible{
+    outline-style: none
+}
+
+:focus-visible {
+    outline: none;
+  } 
+
+
 
 

@@ -1,7 +1,7 @@
 <div class="corpo">
 <app-header-component></app-header-component>
+<app-exit-button (refreshEmitter)="exit()" ></app-exit-button>
 <div class="container-cartas">
-    <app-exit-button (refreshEmitter)="exit()" ></app-exit-button>
     <app-carta-component *ngFor="let carta of listaDeCartas">
         <img [src]="carta.url" class="foto-rapper">
         <p class="nome-rapper"><strong>{{carta.nome}}</strong></p>
