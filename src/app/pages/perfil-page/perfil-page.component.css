@@ -97,7 +97,7 @@
   
   .closebtn {
     margin-left: 15px;
-    color: white;
+    color: #fff;
     font-weight: bold;
     float: right;
     font-size: 22px;
@@ -139,3 +139,5 @@
     background-color: #e5e5e5;
     transition: scale(1.3);
 }
+
+

@@ -11,6 +11,7 @@
     transition-duration: .5s;
     margin: 30px;
     align-content: center;
+    outline: none;
 }
 
 .imagem {
@@ -38,14 +39,31 @@
     box-shadow: 10px 10px;
 }
 
-.div-carta:focus-visible{
-    outline-style: none
+/* aa */
+
+
+.foto-rapper {
+    width: 230px;
+    height: 200px;
+    border-radius: 10px;
 }
 
-:focus-visible {
-    outline: none;
-  } 
+.nome-rapper{
+    text-align: center;
+    height: 30px;
+}
+p {
+    height: 30px;
+    margin-bottom: 0;
+}
 
+.nome-rapper{
+    margin-top: 5px;
+    padding-bottom: 30px;
+}
 
+.nome-rapper ~p{
+    margin-top: 5px;
+}
 
 

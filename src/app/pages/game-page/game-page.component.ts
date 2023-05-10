@@ -10,6 +10,8 @@ import { CartaService } from 'src/app/service/carta.service';
 })
 export class GamePageComponent implements OnInit {
 
+
+
   constructor(private route: Router, private cartaService: CartaService) { }
 
 
@@ -52,9 +54,10 @@ export class GamePageComponent implements OnInit {
 
   backgroundColor!: string
   contadorDePosicoes: number = 0
-  boldList: number[] =  [600,400,400,400]
+  boldList: number[] =  [900,400,400,400]
 
   onKeyDown(event: KeyboardEvent) {
+    console.log(event)
     if (event.key === 'ArrowUp') {
       this.contadorDePosicoes --
     } else if (event.key === 'ArrowDown') {
@@ -69,12 +72,10 @@ export class GamePageComponent implements OnInit {
     }
     for (let i = 0; i < 4; i ++) {
       if (this.contadorDePosicoes == i) {
-        this.boldList[i] = 600;
+        this.boldList[i] = 900;
       } else {
         this.boldList[i] = 400;
       }
     }
-    
   }
-  
 }

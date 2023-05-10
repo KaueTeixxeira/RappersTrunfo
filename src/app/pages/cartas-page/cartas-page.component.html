@@ -2,14 +2,7 @@
 <app-header-component></app-header-component>
 <app-exit-button (refreshEmitter)="exit()" ></app-exit-button>
 <div class="container-cartas">
-    <app-carta-component *ngFor="let carta of listaDeCartas">
-        <img [src]="carta.url" class="foto-rapper">
-        <p class="nome-rapper"><strong>{{carta.nome}}</strong></p>
-        <p class="freestyle">Freestyle: {{carta.freestyle}}</p>
-        <p class="originalidade">Originalidade: {{carta.originalidade}}</p>
-        <p class="impacto">Impacto: {{carta.impacto}}</p>
-        <p class="maisOuvidas">Músicas mais ouvidas: {{carta.maisOuvidas}}</p>
-        <p class="ranking">Ranking: {{carta.ranking}}</p>
+    <app-carta-component *ngFor="let carta of listaDeCartas" [carta]="carta" [verificaRota]="false">
     </app-carta-component>
 </div>
 </div>

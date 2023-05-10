@@ -2,13 +2,6 @@
     <app-exit-button (refreshEmitter)="exit()"></app-exit-button>
 <div>
     <button (click)="pegarBaralho()">Aperte para jogar</button>
-    <app-carta-component  tabindex="0" (keydown)="onKeyDown($event)">
-        <img [src]="carta.url" class="foto-rapper">
-        <p class="nome-rapper"><strong>{{carta.nome}}</strong></p>
-        <p class="freestyle" [ngStyle]="{'font-weight' : boldList[0]}">Freestyle: {{carta.freestyle}}</p>
-        <p class="originalidade" [ngStyle]="{'font-weight' : boldList[1]}">Originalidade: {{carta.originalidade}}</p>
-        <p class="impacto" [ngStyle]="{'font-weight' : boldList[2]}">Impacto: {{carta.impacto}}</p>
-        <p class="maisOuvidas" [ngStyle]="{'font-weight' : boldList[3]}">Músicas mais ouvidas: {{carta.maisOuvidas}}</p>
-        <p class="ranking">Ranking: {{carta.ranking}}</p>
+    <app-carta-component [carta]="carta" [verificaRota]="true" >
     </app-carta-component>
 </div>

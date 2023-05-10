@@ -47,5 +47,4 @@ export class CartasPageComponent implements OnInit {
   exit(){
     this.route.navigate(['/main-page'])
   }
-
 }

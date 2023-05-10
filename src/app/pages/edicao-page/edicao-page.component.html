@@ -10,14 +10,7 @@
 
         <div class="modal-cartas" *ngIf="modalCartas && !modalEdicaoCartas"> <!-- 1.2 -->
             <button (click)="controleCartas()" class="fechar">X</button>
-            <app-carta-component *ngFor="let carta of listaDeCartas" (click)="abrirEdicaoCartas(carta)">
-                <img [src]="carta.url" class="foto-rapper">
-                <p class="nome-rapper"><strong>{{carta.nome}}</strong></p>
-                <p class="freestyle">Freestyle: {{carta.freestyle}}</p>
-                <p class="originalidade">Originalidade: {{carta.originalidade}}</p>
-                <p class="impacto">Impacto: {{carta.impacto}}</p>
-                <p class="maisOuvidas">Músicas mais ouvidas: {{carta.maisOuvidas}}</p>
-                <p class="ranking">Ranking: {{carta.ranking}}</p>
+            <app-carta-component *ngFor="let carta of listaDeCartas" (click)="abrirEdicaoCartas(carta)" [carta]="carta" [verificaRota]="false">
             </app-carta-component>
         </div>
         
