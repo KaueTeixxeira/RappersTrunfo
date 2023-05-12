@@ -1,7 +1,26 @@
-<app-header-component></app-header-component>
+<!-- <app-header-component></app-header-component>
     <app-exit-button (refreshEmitter)="exit()"></app-exit-button>
 <div>
     <button (click)="pegarBaralho()">Aperte para jogar</button>
     <app-carta-component [carta]="carta" [verificaRota]="true" >
     </app-carta-component>
+</div>
+
+AREA DESTINADA ATESTES, COMO O  DA CARTA QUE CONSEGUE SELECIONAR O ATRIBUTO E TUDO MAIS 
+-->
+
+
+<div class="div-fundo">
+    <img src="/assets/imagens/962183.jpg" alt="">
+    <div class="container-central">
+        <div class="title"><h3>Escolha seu adversário</h3></div>
+        <div class="scroll-div">
+            <app-jogador-component *ngFor="let jogador of listaDeJogadores">
+                <p>Nome: {{jogador.nome}}</p>
+                <p>Vitórias: {{jogador.numVitoria}}</p>
+                <p>Derrotas: {{jogador.numDerrota}}</p>
+                <p>Win rate: {{calculaWinRate(jogador)}}</p>
+            </app-jogador-component>
+        </div>
+    </div>
 </div>

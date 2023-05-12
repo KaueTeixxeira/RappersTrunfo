@@ -37,4 +37,69 @@ p {
 
 
 
+/* Com imagem de fundo */
+
+.div-fundo {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-fundo > img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+.container-central {
+    width: 90%;
+    height: 90%;
+    background-color: rgb(255, 255, 255, 0.8);
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    overflow-y: scroll;
+    z-index: 11;
+}
+
+.scroll-div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    z-index: 12;
+}
+
+.title {
+    background-color: rgb(28, 43, 75);
+    position: absolute;
+    top: 4px;
+    padding: 10px;
+    border-radius: 10px;
+    z-index: 13;
+}
+
+h3{
+    color: #fff;
+}
+
+
+::-webkit-scrollbar {
+    width: 10px; /* Largura da barra */
+  }
+  
+  /* Estilização do thumb (o indicador de posição na barra) */
+  ::-webkit-scrollbar-thumb {
+    background-color: black; /* Cor do thumb */
+    border-radius: 5px; /* Arredondamento do thumb */
+  }
+
+
+
 

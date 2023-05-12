@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginPageComponent } from 'src/app/pages/login-page/login-page.component';
 
 @Component({
   selector: 'app-header-component',
@@ -7,11 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
   }
 
   headerImg : string = "/assets/imagens/logoTrunfo.png"
 
+  exit(){
+    sessionStorage.removeItem('perfil');
+    this.route.navigate([""])
+  }
 }

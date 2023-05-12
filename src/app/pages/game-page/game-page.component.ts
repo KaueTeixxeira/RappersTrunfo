@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Carta } from 'src/app/interfaces/Carta';
+import { Jogador } from 'src/app/interfaces/Jogador';
 import { CartaService } from 'src/app/service/carta.service';
+import { JogadorService } from 'src/app/service/jogador.service';
 
 @Component({
   selector: 'app-game-page',
@@ -12,7 +14,7 @@ export class GamePageComponent implements OnInit {
 
 
 
-  constructor(private route: Router, private cartaService: CartaService) { }
+  constructor(private route: Router, private cartaService: CartaService, private jogadorService: JogadorService) { }
 
 
   url!: string;
@@ -25,9 +27,9 @@ export class GamePageComponent implements OnInit {
 
   carta!: Carta;
   ngOnInit(): void {
+    this.encontraAdversarios();
     this.cartaService.getOneCard(1).subscribe((carta : Carta) => {
       this.carta = carta
-
       this.url = carta.url
       this.nomeCarta = carta.nome
       this.freestyle = carta.freestyle
@@ -77,5 +79,19 @@ export class GamePageComponent implements OnInit {
         this.boldList[i] = 400;
       }
     }
+  }
+
+  listaDeJogadores!: Jogador[]
+  encontraAdversarios(){
+    this.jogadorService.getAllPlayers().subscribe((data: Array<Jogador>) => {
+      this.listaDeJogadores = data;
+    });
+  }
+
+  calculaWinRate(jogador: Jogador): string{
+    if (jogador.numDerrota != 0 || jogador.numVitoria != 0) {
+      return  Math.trunc((jogador.numVitoria/(jogador.numVitoria + jogador.numDerrota)) * 100) + "%"
+    }
+    return "0%"
   }
 }
