@@ -4,10 +4,10 @@
         <h1>Login</h1>
         <form>
             <input type="email" class="form-control" id="usuario" name="usuario" aria-describedby="emailHelp"
-                placeholder="Usuário" [(ngModel)]="usuario" #nome >
+                placeholder="Usuário" [(ngModel)]="usuario" #nome>
             <input type="password" class="form-control" name="senha" placeholder="Senha" [(ngModel)]="senha">
-            <button (click)="enviarDados()" class="btn fifth"  type="submit" >Logar</button>
-            <p class="cadastrar" (click)="abreCadastro()">Não possui uma conta?<strong > Cadastre-se</strong></p>
+            <button (click)="enviarDados()" class="btn fifth" type="submit">Logar</button>
+            <p class="cadastrar" (click)="abreCadastro()">Não possui uma conta?<strong> Cadastre-se</strong></p>
         </form>
     </div>
 
@@ -15,9 +15,13 @@
         <h1>Registre-se</h1>
         <form>
             <input type="text" placeholder="Nome de usuário" name="usuario" class="form-control" [(ngModel)]="usuario">
-            <input type="password" class="form-control"  placeholder="Senha" name="senha" [(ngModel)]="senha">
-            <input type="password" class="form-control" placeholder="Confirmar senha"  name="confirmacaoSenha"[(ngModel)]="confirmacaoSenha">
-            <button class="btn fifth"(click)="criarConta()">Criar conta</button>
+            <input type="password" class="form-control" placeholder="Senha" name="senha" [(ngModel)]="senha">
+            <input type="password" class="form-control" placeholder="Confirmar senha" name="confirmacaoSenha"
+                [(ngModel)]="confirmacaoSenha">
+            <div class="buttons">
+                <button class="btn fifth" (click)="abreCadastro()">Cancelar</button>
+                <button class="btn fifth" (click)="criarConta()">Criar conta</button>
+            </div>
         </form>
     </div>
 </div>

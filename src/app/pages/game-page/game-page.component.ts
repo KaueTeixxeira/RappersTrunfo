@@ -14,7 +14,7 @@ export class GamePageComponent implements OnInit {
 
 
 
-  constructor(private route: Router, private cartaService: CartaService, private jogadorService: JogadorService) { }
+  constructor(private route: Router, private cartaService: CartaService, private jogadorService: JogadorService) {}
 
 
   url!: string;
@@ -28,7 +28,7 @@ export class GamePageComponent implements OnInit {
   carta!: Carta;
   ngOnInit(): void {
     this.encontraAdversarios();
-    this.cartaService.getOneCard(1).subscribe((carta : Carta) => {
+    this.cartaService.getOneCard(1).subscribe((carta: Carta) => {
       this.carta = carta
       this.url = carta.url
       this.nomeCarta = carta.nome
@@ -41,12 +41,12 @@ export class GamePageComponent implements OnInit {
   deckFirstPlayer!: Carta[]
   deckSecondPlayer!: Carta[]
 
-  exit(){
+  exit() {
     this.route.navigate(['/main-page'])
   }
 
-  pegarBaralho(){
-    this.cartaService.starGame().subscribe((decks: Carta[][]) => { 
+  pegarBaralho() {
+    this.cartaService.starGame().subscribe((decks: Carta[][]) => {
       this.deckFirstPlayer = decks[0];
       this.deckSecondPlayer = decks[1];
       console.log(this.deckFirstPlayer)
@@ -56,14 +56,14 @@ export class GamePageComponent implements OnInit {
 
   backgroundColor!: string
   contadorDePosicoes: number = 0
-  boldList: number[] =  [900,400,400,400]
+  boldList: number[] = [900, 400, 400, 400]
 
   onKeyDown(event: KeyboardEvent) {
     console.log(event)
     if (event.key === 'ArrowUp') {
-      this.contadorDePosicoes --
+      this.contadorDePosicoes--
     } else if (event.key === 'ArrowDown') {
-      this.contadorDePosicoes ++
+      this.contadorDePosicoes++
     }
 
     if (this.contadorDePosicoes == -1) {
@@ -72,7 +72,7 @@ export class GamePageComponent implements OnInit {
     if (this.contadorDePosicoes == 4) {
       this.contadorDePosicoes = 0
     }
-    for (let i = 0; i < 4; i ++) {
+    for (let i = 0; i < 4; i++) {
       if (this.contadorDePosicoes == i) {
         this.boldList[i] = 900;
       } else {
@@ -82,16 +82,47 @@ export class GamePageComponent implements OnInit {
   }
 
   listaDeJogadores!: Jogador[]
-  encontraAdversarios(){
+  encontraAdversarios() {
     this.jogadorService.getAllPlayers().subscribe((data: Array<Jogador>) => {
       this.listaDeJogadores = data;
+      // this.jogadoresFiltrados = this.listaDeJogadores.slice();
     });
   }
 
-  calculaWinRate(jogador: Jogador): string{
+  calculaWinRate(jogador: Jogador): string {
     if (jogador.numDerrota != 0 || jogador.numVitoria != 0) {
-      return  Math.trunc((jogador.numVitoria/(jogador.numVitoria + jogador.numDerrota)) * 100) + "%"
+      return Math.trunc((jogador.numVitoria / (jogador.numVitoria + jogador.numDerrota)) * 100) + "%"
     }
     return "0%"
   }
+  
+
+
+  jogadorSelecionado!: Jogador;
+
+  selecionaJogador(jogadorSelecionado: Jogador) {
+    this.jogadorSelecionado = jogadorSelecionado;
+  }
+
+
+  
+// public nomePesquisado: string;
+
+// jogadoresFiltrados: Jogador[] = [];
+
+//  filtrarJogadores(): void {
+//   console.log(this.nomePesquisado)
+//   if (this.nomePesquisado.trim() === '') {
+//     this.jogadoresFiltrados = this.listaDeJogadores.slice();
+//   } else {
+//     this.jogadoresFiltrados = this.listaDeJogadores.filter(jogador =>
+//       jogador.nome.toLowerCase().includes(this.nomePesquisado.toLowerCase())
+//     );
+//   }
+// } Fazer a parte da filtragem
+
+
+
+
+
 }

@@ -13,14 +13,24 @@ AREA DESTINADA ATESTES, COMO O  DA CARTA QUE CONSEGUE SELECIONAR O ATRIBUTO E TU
 <div class="div-fundo">
     <img src="/assets/imagens/962183.jpg" alt="">
     <div class="container-central">
-        <div class="title"><h3>Escolha seu adversário</h3></div>
+        <div class="tittle-bar">
+            <form>
+                <input type="text" placeholder="Buscar jogador" [(ngModel)]="nomePesquisado" (input)="filtrarJogadores()">
+            </form>
+            <div class="title">
+                <h3>Escolha seu adversário</h3>
+            </div>
+            <div class="fechar-div">
+                <button (click)="exit()" class="fechar">X</button>
+            </div>
+        </div>
         <div class="scroll-div">
-            <app-jogador-component *ngFor="let jogador of listaDeJogadores">
-                <p>Nome: {{jogador.nome}}</p>
-                <p>Vitórias: {{jogador.numVitoria}}</p>
-                <p>Derrotas: {{jogador.numDerrota}}</p>
-                <p>Win rate: {{calculaWinRate(jogador)}}</p>
+            <app-jogador-component *ngFor="let jogador of jogadoresFiltrados" [jogador]="jogador" [ngClass]="{'cursor-pointer': true}" [jogadorSelecionado]="jogadorSelecionado" 
+            (click)="selecionaJogador(jogador)">
             </app-jogador-component>
+        </div>
+        <div class="div-desafiar">
+            <h3>Desafiar</h3>
         </div>
     </div>
 </div>

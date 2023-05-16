@@ -2,11 +2,7 @@
     <app-header-component></app-header-component>
     <app-exit-button (refreshEmitter)="exit()" ></app-exit-button>
     <div class="container-jogadores">
-        <app-jogador-component *ngFor="let jogador of listaDeJogadores">
-            <p>Nome: {{jogador.nome}}</p>
-            <p>Vitórias: {{jogador.numVitoria}}</p>
-            <p>Derrotas: {{jogador.numDerrota}}</p>
-            <p>Win rate: {{calculaWinRate(jogador)}}</p>
+        <app-jogador-component *ngFor="let jogador of listaDeJogadores" [jogador]="jogador">
         </app-jogador-component>
     </div>
 </div>

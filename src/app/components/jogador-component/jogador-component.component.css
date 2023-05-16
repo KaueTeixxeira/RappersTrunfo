@@ -16,7 +16,7 @@
     padding: 30px;
 }
 
-.div-jogador:hover {
+.div-jogador:hover{
     transform: scale(1.05);
     transition-duration: .5s;
     color: #000;
@@ -24,3 +24,14 @@
     box-shadow: 10px 10px;
 }
 
+p{
+    text-align: center;
+}
+
+.selecionada{
+    transform: scale(1.05);
+    transition-duration: .5s;
+    color: #000;
+    background-color: #e5e5e5;
+    box-shadow: 10px 10px;
+}

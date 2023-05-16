@@ -1,5 +1,9 @@
-<div class="div-jogador">
+<div class="div-jogador"  [ngClass]="{'selecionada': jogador === jogadorSelecionado}">
     <div class="centro">
+        <p>Nome: {{jogador.nome}}</p>
+        <p>Vitórias: {{jogador.numVitoria}}</p>
+        <p>Derrotas: {{jogador.numDerrota}}</p>
+        <p>Win rate: {{calculaWinRate(jogador)}}</p>
         <ng-content></ng-content>
     </div>
 </div>

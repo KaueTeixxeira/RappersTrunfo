@@ -19,11 +19,7 @@
         <div class="modal-cartas" *ngIf="modalJogadores && !modalEdicaoCartas"> <!--2.2 -->
             
             <button (click)="controleJogadores()" class="fechar">X</button>
-            <app-jogador-component *ngFor="let jogador of listaDeJogadores" (click)="abrirEdicaoJogadores(jogador)">
-                <p>Nome: {{jogador.nome}}</p>
-                <p>Vitórias: {{jogador.numVitoria}}</p>
-                <p>Derrotas: {{jogador.numDerrota}}</p>
-                <p>Win rate: {{calculaWinRate(jogador)}}</p>
+            <app-jogador-component *ngFor="let jogador of listaDeJogadores" (click)="abrirEdicaoJogadores(jogador)" [jogador]="jogador">
             </app-jogador-component>
         </div>
 

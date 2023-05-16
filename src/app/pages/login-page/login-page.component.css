@@ -51,6 +51,12 @@ form>input {
   width: 90%;
 }
 
+.buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
 /* Botao */
 
 .fifth {
@@ -97,7 +103,6 @@ form>input {
 }
 
 .cadastrar {
-  height: 10px;
   opacity: 0.5;
   color: #fff;
   transition-duration: 0.3s;

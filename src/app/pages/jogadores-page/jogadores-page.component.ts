@@ -44,13 +44,6 @@ export class JogadoresPageComponent implements OnInit {
 
   listaDeJogadores!: Array<Jogador>;
 
-  calculaWinRate(jogador: Jogador): string{
-    if (jogador.numDerrota != 0 || jogador.numVitoria != 0) {
-      return  Math.trunc((jogador.numVitoria/(jogador.numVitoria + jogador.numDerrota)) * 100) + "%"
-    }
-    return "0%"
-  }
-
   exit(){
     this.route.navigate(['/main-page'])
   }

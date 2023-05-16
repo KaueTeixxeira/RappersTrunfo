@@ -66,7 +66,7 @@
       }
     }
     abreCadastro(){
-      this.logar = false;
+      this.logar = !this.logar;
     }
 
   }

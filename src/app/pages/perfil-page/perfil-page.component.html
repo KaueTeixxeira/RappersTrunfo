@@ -1,11 +1,7 @@
 <app-header-component></app-header-component>
 <app-exit-button (refreshEmitter)="exit()" ></app-exit-button>
 <div class="div-perfil">
-    <app-jogador-component *ngIf="visualizar">
-        <p>Nome: {{nome}}</p>
-        <p>Vitórias: {{this.numVitoria}}</p>
-        <p>Derrotas: {{this.numDerrota}}</p>
-        <p>Win rate: {{this.porcVitoria}}</p>
+    <app-jogador-component *ngIf="visualizar" [jogador]="jogador">
         <button class="btn fifth" (click)="editaPerfil()">Editar</button>
     </app-jogador-component>
     <div class="container-central" *ngIf="!visualizar">

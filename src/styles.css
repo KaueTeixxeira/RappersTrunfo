@@ -2,3 +2,13 @@
     margin: 0%;
     padding: 0%;
 }
+
+::-webkit-scrollbar {
+    opacity: 0;
+    width: 10px; /* Largura da barra */
+  }
+  
+  /* Estilização do thumb (o indicador de posição na barra) */
+  ::-webkit-scrollbar-thumb {
+    background-color: black; /* Cor do thumb */
+    border-radius: 5px; /* Arredondamento do thumb */  }

@@ -22,6 +22,7 @@
     height: 30px;
 }
 p {
+    text-align: center;
     height: 30px;
     margin-bottom: 0;
 }
@@ -64,6 +65,7 @@ p {
     border-radius: 20px;
     overflow-y: scroll;
     z-index: 11;
+    flex-wrap: wrap;
 }
 
 .scroll-div {
@@ -76,29 +78,98 @@ p {
     z-index: 12;
 }
 
+
+.tittle-bar {
+    display: flex;
+    width: inherit;
+    justify-content: space-between;
+    top: 4px;
+    z-index: 13;
+    position: fixed;
+    padding: 0px 0px 0px 10px;
+}
+
 .title {
     background-color: rgb(28, 43, 75);
-    position: absolute;
     top: 4px;
-    padding: 10px;
+    padding: 12px;
     border-radius: 10px;
-    z-index: 13;
 }
 
 h3{
     color: #fff;
+    margin-bottom: 0;
+}
+
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+}
+form > input{
+    font-size: medium;
+    padding: 2px 10px 2px 10px;
+    border-radius: 10px;
 }
 
 
-::-webkit-scrollbar {
-    width: 10px; /* Largura da barra */
+
+.inherit-position {
+    position: relative;
   }
-  
-  /* Estilização do thumb (o indicador de posição na barra) */
-  ::-webkit-scrollbar-thumb {
-    background-color: black; /* Cor do thumb */
-    border-radius: 5px; /* Arredondamento do thumb */
-  }
+
+.fechar-div{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 25%;
+}
+
+
+
+/* Exit button */
+.fechar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color:  rgb(28, 43, 75);
+    color: #fff;
+    font-weight: 900;
+    top: 10px;
+    right: 0;
+    transition-duration: .5s;
+    font-size: x-large;
+}
+.fechar:hover {
+    transition-duration: .5s;
+    transform: scale(1.05);
+    transition: scale(1.3);
+}
+
+.cursor-pointer:hover {
+    cursor: pointer;
+}
+
+.div-desafiar{
+    transition-duration: .5s;
+    cursor: pointer;
+    padding: 10px;
+    background-color: rgb(28, 43, 75);
+    border-radius: 10px;
+    position: absolute;
+    top: 91%;
+    z-index: 13;
+}
+
+.div-desafiar:hover {
+    transition-duration: .5s;
+    transform: scale(1.01);
+    transition: scale(1.3);
+}
+
+
 
 
 
