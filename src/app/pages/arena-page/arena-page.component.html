@@ -1,0 +1,38 @@
+<img src="/assets/imagens/sairPreto.png" class="icon">
+<div class="div-fundo">
+    <!-- <div>
+        <button (click)="pegarBaralho()">Aperte para jogar</button>
+        <app-carta-component [carta]="carta" [verificaRota]="true">
+        </app-carta-component>
+    </div> -->
+    <div class="container-esquerda">
+        <div class="div-player">
+            <p class="nome-jogador">
+                <strong>
+                    {{desafiante.nome}}
+                </strong>
+            </p>
+            <p class="cartasRestantes">
+                Cartas restantes: {{deckFirstPlayer.length}} 
+            </p>
+        </div>
+        <app-carta-component [carta]="carta" ></app-carta-component>
+    </div>
+    <div class="container-central">
+            
+    </div>
+    <div class="container-direita">
+        <app-carta-component [carta]="carta" ></app-carta-component>
+        <div class="div-player">
+            <p class="nome-jogador">
+                <strong>
+                    {{desafiante.nome}}
+                </strong>
+            </p>
+            <p class="cartasRestantes">
+                Cartas restantes: {{deckFirstPlayer.length}} 
+            </p>
+        </div>
+    </div>
+    
+</div>

@@ -19,6 +19,7 @@ import { EdicaoComponentComponent } from './components/edicao-component/edicao-c
 import { HttpClientModule } from '@angular/common/http';
 import { ExitButtonComponent } from './components/exit-button/exit-button.component';
 import { GamePageComponent } from './pages/game-page/game-page.component';
+import { ArenaPageComponent } from './pages/arena-page/arena-page.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { GamePageComponent } from './pages/game-page/game-page.component';
     EdicaoPageComponent,
     EdicaoComponentComponent,
     ExitButtonComponent,
-    GamePageComponent
+    GamePageComponent,
+    ArenaPageComponent
   ],
   imports: [
     FormsModule,

@@ -4,6 +4,7 @@ import { Carta } from 'src/app/interfaces/Carta';
 import { Jogador } from 'src/app/interfaces/Jogador';
 import { CartaService } from 'src/app/service/carta.service';
 import { JogadorService } from 'src/app/service/jogador.service';
+import { SessionStorageService } from 'src/app/service/session-storage.service';
 
 @Component({
   selector: 'app-game-page',
@@ -14,7 +15,9 @@ export class GamePageComponent implements OnInit {
 
 
 
-  constructor(private route: Router, private cartaService: CartaService, private jogadorService: JogadorService) {}
+  constructor(private route: Router, private cartaService: CartaService,
+     private jogadorService: JogadorService,
+     private perfilGuard: SessionStorageService) { }
 
 
   url!: string;
@@ -28,6 +31,7 @@ export class GamePageComponent implements OnInit {
   carta!: Carta;
   ngOnInit(): void {
     this.encontraAdversarios();
+    this.jogadorSelecionado = this.jogadorVazio;
     this.cartaService.getOneCard(1).subscribe((carta: Carta) => {
       this.carta = carta
       this.url = carta.url
@@ -85,7 +89,7 @@ export class GamePageComponent implements OnInit {
   encontraAdversarios() {
     this.jogadorService.getAllPlayers().subscribe((data: Array<Jogador>) => {
       this.listaDeJogadores = data;
-      // this.jogadoresFiltrados = this.listaDeJogadores.slice();
+      this.jogadoresFiltrados = this.listaDeJogadores.slice();
     });
   }
 
@@ -95,34 +99,47 @@ export class GamePageComponent implements OnInit {
     }
     return "0%"
   }
-  
+
 
 
   jogadorSelecionado!: Jogador;
 
+  jogadorVazio: Jogador = {
+    id: 0,
+    nome: "",
+    numVitoria: 0,
+    numDerrota: 0,
+    senha: ""
+  }
+
   selecionaJogador(jogadorSelecionado: Jogador) {
-    this.jogadorSelecionado = jogadorSelecionado;
+    if (this.jogadorSelecionado !== jogadorSelecionado) {
+      this.jogadorSelecionado = jogadorSelecionado;
+    } else {
+      this.jogadorSelecionado = this.jogadorVazio;
+    }
   }
 
 
-  
-// public nomePesquisado: string;
+  nomePesquisado!: string;
 
-// jogadoresFiltrados: Jogador[] = [];
+  jogadoresFiltrados: Jogador[] = [];
 
-//  filtrarJogadores(): void {
-//   console.log(this.nomePesquisado)
-//   if (this.nomePesquisado.trim() === '') {
-//     this.jogadoresFiltrados = this.listaDeJogadores.slice();
-//   } else {
-//     this.jogadoresFiltrados = this.listaDeJogadores.filter(jogador =>
-//       jogador.nome.toLowerCase().includes(this.nomePesquisado.toLowerCase())
-//     );
-//   }
-// } Fazer a parte da filtragem
+  filtrarJogadores(): void {
+    console.log(this.nomePesquisado)
+    if (this.nomePesquisado.trim() === '') {
+      this.jogadoresFiltrados = this.listaDeJogadores.slice();
+    } else {
+      this.jogadoresFiltrados = this.listaDeJogadores.filter(jogador =>
+        jogador.nome.toLowerCase().includes(this.nomePesquisado.toLowerCase())
+      );
+    }
+  }
 
-
-
+  jogar(){
+    this.jogadorService.setAdversario(this.jogadorSelecionado);
+    this.route.navigate(["arena-page"])
+  }
 
 
 }

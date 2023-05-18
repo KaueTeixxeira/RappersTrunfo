@@ -15,7 +15,7 @@ AREA DESTINADA ATESTES, COMO O  DA CARTA QUE CONSEGUE SELECIONAR O ATRIBUTO E TU
     <div class="container-central">
         <div class="tittle-bar">
             <form>
-                <input type="text" placeholder="Buscar jogador" [(ngModel)]="nomePesquisado" (input)="filtrarJogadores()">
+                <input type="text" placeholder="Buscar jogador" [(ngModel)]="nomePesquisado" (input)="filtrarJogadores()" name="nomePesquisado">
             </form>
             <div class="title">
                 <h3>Escolha seu adversário</h3>
@@ -29,8 +29,10 @@ AREA DESTINADA ATESTES, COMO O  DA CARTA QUE CONSEGUE SELECIONAR O ATRIBUTO E TU
             (click)="selecionaJogador(jogador)">
             </app-jogador-component>
         </div>
-        <div class="div-desafiar">
+        <div class="div-desafiar" *ngIf="jogadorSelecionado != jogadorVazio" (click)="jogar()">
             <h3>Desafiar</h3>
         </div>
     </div>
 </div>
+
+

@@ -31,7 +31,7 @@
       this.jogadorService.getOnePlayer(this.usuario).subscribe((jogador: Jogador) => {
         if (jogador != null) {
           if(jogador.nome === this.usuario && jogador.senha === this.senha){
-            this.perfilGuard.setItem('perfil', jogador);
+            this.jogadorService.setPerfil(jogador)
             this.route.navigate(['/main-page'])
           }
         } 
@@ -59,7 +59,6 @@
         })
         if (verificaUsuario) {
           this.jogadorService.createPlayer(player).subscribe((data: Jogador) => {
-            console.log(data)
             this.enviarDados()
           })
         }

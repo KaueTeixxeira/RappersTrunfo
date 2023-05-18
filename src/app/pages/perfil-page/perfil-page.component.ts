@@ -15,7 +15,8 @@ export class PerfilPageComponent implements OnInit {
 
 
   visualizar = true;
-  constructor(private meuServico: MeuServico, private perfilGuard: SessionStorageService,private route: Router, private jogadorService: JogadorService) { }
+  constructor(private route: Router,
+    private jogadorService: JogadorService) { }
 
   id!: number;
   nome!: String ;
@@ -55,8 +56,7 @@ export class PerfilPageComponent implements OnInit {
         numDerrota: this.numDerrota,
         senha: this.senha
       } 
-      this.perfilGuard.setItem('perfil', player);
-      console.log("a : " + this.id)
+      this.jogadorService.setPerfil(player)
       this.jogadorService.editPlayer(this.id, player).subscribe((data: Jogador) => {
         console.log(data)
       })
@@ -72,7 +72,6 @@ export class PerfilPageComponent implements OnInit {
 
   reloadPerfil(){
     this.informacoes = sessionStorage.getItem("perfil")
-    console.log(JSON.parse(this.informacoes))
     this.jogador = JSON.parse(this.informacoes);
     console.log(this.jogador.id)
     this.nome = this.jogador.nome;

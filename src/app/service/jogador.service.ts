@@ -4,15 +4,20 @@ import { Observable, take } from 'rxjs';
 import { CartaComponentComponent } from '../components/carta-component/carta-component.component';
 import { CartasPageComponent } from '../pages/cartas-page/cartas-page.component';
 import { Jogador } from '../interfaces/Jogador';
+import { SessionStorageService } from './session-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JogadorService {
 
+    perfil!: Jogador;
+    adversario!: Jogador;
+
+    informacoes!: any;
     apiUrl: string = "http://localhost:8081/jogador"
 
-    constructor(private httpClient: HttpClient){}
+    constructor(private httpClient: HttpClient, private perfilGuard: SessionStorageService){}
 
     getAllPlayers(): Observable<any>{ // Buscar todas
         return this.httpClient.get<any>(this.apiUrl + "/all")
@@ -32,5 +37,26 @@ export class JogadorService {
 
     editPlayer(id: Number, jogador: Jogador): Observable<any>{ // Editar jogador
         return this.httpClient.put<any>(this.apiUrl + "/edit/" + id, jogador);
+    }
+
+    setAdversario(adversario : Jogador){
+        this.perfilGuard.setItem('adversario',JSON.stringify(adversario));
+    }
+
+    getAdversario(): Jogador{
+        this.informacoes = this.perfilGuard.getItem("adversario")
+        this.adversario = JSON.parse(this.informacoes)
+        console.log(this.adversario)
+        return this.adversario
+    }
+
+    setPerfil(jogador: Jogador){
+        this.perfilGuard.setItem('perfil',JSON.stringify(jogador));
+    }
+
+    getPerfil(): Jogador{
+        this.informacoes = this.perfilGuard.getItem("perfil")
+        this.perfil = JSON.parse(this.informacoes)
+        return this.perfil
     }
 }

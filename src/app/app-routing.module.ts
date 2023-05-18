@@ -7,6 +7,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { PerfilPageComponent } from './pages/perfil-page/perfil-page.component';
 import { GamePageComponent } from './pages/game-page/game-page.component';
+import { ArenaPageComponent } from './pages/arena-page/arena-page.component';
 
 const routes: Routes = [
   {path: '',component: LoginPageComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'jogadores-page', component: JogadoresPageComponent},
   {path: 'perfil-page', component: PerfilPageComponent},
   {path: 'edicao-page', component: EdicaoPageComponent},
-  {path: 'game-page', component: GamePageComponent}
+  {path: 'game-page', component: GamePageComponent},
+  {path: 'arena-page', component: ArenaPageComponent}
 ];
 
 @NgModule({
