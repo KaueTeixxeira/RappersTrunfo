@@ -2,6 +2,7 @@ import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { MeuServico } from 'src/app/app.service';
 import { LoginPageComponent } from '../login-page/login-page.component';
 import { Jogador } from 'src/app/interfaces/Jogador';
+import { JogadorService } from 'src/app/service/jogador.service';
 
 @Component({
   selector: 'app-main-page',
@@ -13,8 +14,8 @@ export class MainPageComponent implements OnInit {
   ngOnInit(): void {
     this.itens = [{ titulo: "/assets/imagens/jogarLogoP.png", rota: "/game-page" }, { titulo: "/assets/imagens/cartasLogoP.png", rota: "/cartas-page" }, { titulo: "/assets/imagens/jgoadoresLogoP.png", rota: "/jogadores-page" }, 
     { titulo: "/assets/imagens/perfilLogoP.png", rota: "/perfil-page" }];
-    this.informacoes = sessionStorage.getItem("perfil");
-    this.jogador = JSON.parse(this.informacoes);
+    
+    this.jogador = this.jogadorService.getPerfil();
     if (this.jogador.id == 1){
       this.itens.push({ titulo: "/assets/imagens/editarLogoP.png", rota: "/edicao-page" })
     }
@@ -25,7 +26,7 @@ export class MainPageComponent implements OnInit {
   
   itens!: Array<Item>;
   
-  constructor() {
+  constructor(private jogadorService: JogadorService) {
   }
 
 }

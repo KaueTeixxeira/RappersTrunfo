@@ -47,8 +47,8 @@ export class PerfilPageComponent implements OnInit {
     this.alertBoolean = !this.alertBoolean
   }
   
-  postEdicoes(){//arrumar essa merda de verificação
-    if (this.senha != ""){
+  postEdicoes(){
+    if (this.senha != "" && this.senha != null){
       let player = {
         id: this.id,
         nome: this.nome,
@@ -71,8 +71,7 @@ export class PerfilPageComponent implements OnInit {
   }
 
   reloadPerfil(){
-    this.informacoes = sessionStorage.getItem("perfil")
-    this.jogador = JSON.parse(this.informacoes);
+    this.jogador = this.jogadorService.getPerfil();
     console.log(this.jogador.id)
     this.nome = this.jogador.nome;
     this.numVitoria =  this.jogador.numVitoria
