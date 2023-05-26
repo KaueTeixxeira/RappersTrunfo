@@ -100,8 +100,6 @@ export class GamePageComponent implements OnInit {
     return "0%"
   }
 
-
-
   jogadorSelecionado!: Jogador;
 
   jogadorVazio: Jogador = {

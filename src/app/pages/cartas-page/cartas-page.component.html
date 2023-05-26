@@ -5,4 +5,7 @@
     <app-carta-component *ngFor="let carta of listaDeCartas" [carta]="carta" [verificaRota]="false">
     </app-carta-component>
 </div>
+<div class="div-mais" *ngIf="!last">
+    <h4 (click)="getCards(currentPage + 1)">Ver mais</h4>
+</div>
 </div>

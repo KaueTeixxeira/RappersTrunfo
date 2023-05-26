@@ -35,6 +35,25 @@ p {
     margin-top: 5px;
 }
 
+.div-mais{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    
+}
+
+
+.div-mais > h4 {
+    background-color: rgb(28, 43, 75);
+    top: 4px;
+    padding: 12px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
 
 
 

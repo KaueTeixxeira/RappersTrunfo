@@ -17,6 +17,10 @@ export class CartaService {
     getAllCards(): Observable<any>{ // Buscar todas
         return this.httpClient.get<any>(this.apiUrl + "/all")
     }
+    
+    getSomeCards(page: Number, size: Number): Observable<any>{
+        return this.httpClient.get<any>(this.apiUrl + "?page=" + page + "&size=" + size)
+    }
 
     getOneCard(id: Number): Observable<any>{ // Buscar uma
         return this.httpClient.get(this.apiUrl + "/" + id)
