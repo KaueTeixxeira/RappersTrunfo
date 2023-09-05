@@ -10,7 +10,7 @@ import { Carta } from '../interfaces/Carta';
 })
 export class CartaService {
 
-    apiUrl: string = "http://localhost:8081/carta"
+    apiUrl: string = "http://localhost:8082/carta"
 
     constructor(private httpClient: HttpClient){}
 

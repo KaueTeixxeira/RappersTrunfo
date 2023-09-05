@@ -1,4 +1,5 @@
-  import { Component, OnInit } from '@angular/core';
+  import { ThisReceiver } from '@angular/compiler';
+import { Component, OnInit } from '@angular/core';
   import { Router, RouterLink } from '@angular/router';
   import { Howl } from 'howler';
   import { MeuServico } from 'src/app/app.service';
@@ -28,14 +29,21 @@
     enviarDados() {
 
       // this.jogadorService.getOnePlayer(this.usuario)
-      this.jogadorService.getOnePlayer(this.usuario).subscribe((jogador: Jogador) => {
-        if (jogador != null) {
-          if(jogador.nome === this.usuario && jogador.senha === this.senha){
-            this.jogadorService.setPerfil(jogador)
-            this.route.navigate(['/main-page'])
-          }
-        } 
-      })
+
+        this.jogadorService.login(this.usuario, this.senha).subscribe(teste => {
+          console.log(teste);
+        })
+      // this.jogadorService.getOnePlayer(this.usuario).subscribe((jogador: Jogador) => {
+      //   if (jogador != null) {
+      //     if(jogador.nome === this.usuario && jogador.senha === this.senha){
+      //       this.jogadorService.setPerfil(jogador)
+      //       this.route.navigate(['/main-page'])
+      //     }
+      //   } 
+      // }) EX LOGIN TRANFORMANDO EM SECURITY
+
+
+
       // this.minhaArray.forEach(usuario => {
       //   if (usuario.senha === this.senha && usuario.usuario === this.usuario) {
       //     console.log(this.perfilGuard.getItem("perfil"))
@@ -50,16 +58,17 @@
       let player: Jogador = {id: 0, nome: this.usuario, numDerrota: 0, numVitoria: 0, senha: this.senha}
       let verificaUsuario = true;
       if (this.senha === this.confirmacaoSenha){
-        this.jogadorService.getAllPlayers().subscribe((data: Jogador[]) => {
-          for (let jogador of data){
-            if (jogador.nome == player.nome){
-              verificaUsuario = false;
-            }
-          }
-        })
+        // this.jogadorService.getAllPlayers().subscribe((data: Jogador[]) => {
+        //   for (let jogador of data){
+        //     if (jogador.nome == player.nome){
+        //       verificaUsuario = false;
+        //     }
+        //   }
+        // })
         if (verificaUsuario) {
           this.jogadorService.createPlayer(player).subscribe((data: Jogador) => {
-            this.enviarDados()
+            // this.enviarDados()
+            console.log("Cadastrado com sucesso")
           })
         }
       }

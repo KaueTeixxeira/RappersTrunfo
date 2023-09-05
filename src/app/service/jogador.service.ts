@@ -15,7 +15,7 @@ export class JogadorService {
     adversario!: Jogador;
 
     informacoes!: any;
-    apiUrl: string = "http://localhost:8081/jogador"
+    apiUrl: string = "http://localhost:8082/jogador"
 
     constructor(private httpClient: HttpClient, private perfilGuard: SessionStorageService){}
 
@@ -28,7 +28,7 @@ export class JogadorService {
     }
 
     createPlayer(jogador: Jogador): Observable<any>{ // Criar jogador
-        return this.httpClient.post<any>(this.apiUrl, jogador).pipe(take(1))
+        return this.httpClient.post<any>("http://localhost:8082/auth/register", jogador).pipe(take(1))
     }
 
     deletePlayer(id: Number): Observable<any>{ // Deletar jogador
@@ -58,5 +58,11 @@ export class JogadorService {
         this.informacoes = this.perfilGuard.getItem("perfil")
         this.perfil = JSON.parse(this.informacoes)
         return this.perfil
+    }
+
+    login(email: string, senha: string){
+        return this.httpClient.post("http://localhost:8082/auth/login",
+         {login: email, password: senha},
+         {withCredentials:true})
     }
 }
